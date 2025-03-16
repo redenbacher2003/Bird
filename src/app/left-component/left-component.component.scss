@@ -1,0 +1,37 @@
+:host ::ng-deep {
+    .category-Icon{
+      width: 1rem;
+      height: 1rem;
+      background-image : url("/category.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .specie-Icon {
+      width: 1rem;
+      height: 1rem;
+      background-image: url("/specie.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .nest-Icon {
+      width: 1rem;
+      height: 1rem;
+      background-image: url("/nest.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .habitat-Icon {
+      width: 1rem;
+      height: 1rem;
+      background-image: url("/starling-box.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+  }
