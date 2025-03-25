@@ -1,0 +1,28 @@
+<div class="main-container">
+    <div class ="Species-control">
+        <div class="Species-search card flex justify-center">
+            <p-autocomplete [(ngModel)]="selectedSpecie" 
+                            [forceSelection]="true" 
+                            [suggestions]="filteredSpecies" 
+                            (completeMethod)="filterSpecie($event)" 
+                            optionLabel="Specie"
+                            [size]="'small'" />     
+            <p-button icon="pi pi-search" [size]="'small'"></p-button>     
+        </div>
+        <div class="Species-refresh">
+            <p-select [options]="specieShowOptions" 
+                      [(ngModel)]="selectedShowOption" 
+                      variant="filled" 
+                      optionLabel="name" 
+                      placeholder="Show"
+                      size="small" />
+            <p-button label="Refresh" icon="pi pi-refresh" (onClick)="getSpecies('order')"  [size]="'small'"></p-button>     
+            <p-button label="shuffle" icon="shuffle-icon" (onClick)="getSpecies('shuffle')"  [size]="'small'"></p-button>     
+        </div>
+    </div>
+    <div *ngIf="species" class="species-container">
+        <div *ngFor="let specie of species">
+            <app-specie-card [specie]="specie"></app-specie-card>
+        </div>
+    </div>
+</div>

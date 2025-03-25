@@ -1,0 +1,31 @@
+:host ::ng-deep {
+  .shuffle-icon{
+    width: 1rem;
+    height: 1rem;
+    background-image : url("/shuffle.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+.main-container {
+  padding-bottom: 1rem;
+}
+.species-container {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+ }
+
+.Species-search, .Species-refresh {
+  display: flex;
+  justify-content: center; /* Align items horizontally */
+  margin-bottom: .50rem;
+  align-items: center; /* Align items vertically */
+  gap: 0.20rem;
+}
+
+.Species-control {
+  display: flex;
+  justify-content : space-between;
+}

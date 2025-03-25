@@ -1,10 +1,11 @@
 import { CommonModule} from '@angular/common';
 import { Component, OnInit} from '@angular/core';
-import { MenuModule } from 'primeng/menu';
+import { MenuItemContent, MenuModule } from 'primeng/menu';
 import { ToastModule } from 'primeng/toast';
 import { MenuItem } from '../interface/items';
 import { DataaccessService } from '../dataaccess.service';
 import { PanelMenuModule } from 'primeng/panelmenu';
+
 
 @Component({
   selector: 'app-left-component',
@@ -20,52 +21,48 @@ export class LeftComponentComponent implements OnInit {
   constructor(private dataAccessService: DataaccessService) { }
 
   ngOnInit() {
-
-    this.dataAccessService.getSpecies().subscribe(
-                                                   (data : MenuItem[]) => 
-                                                      { 
-                                                        this.specieItems = data;
                                                        
     this.items = [
-        {
+        {            
             label: 'Species',
-            items: this.specieItems,
+            items: [],            
             icon: 'specie-Icon',
+            routerLink: 'species'
         },
         {
+            
             label: 'Bird Search By',
-            icon: 'pi pi-search',
+            icon: 'pi pi-search',            
             items: [
                 {
+                    
                     label: 'Name',
-                    icon: 'category-Icon',
+                    icon: 'category-Icon'
                 },
-                {
+                {                       
                     label: 'Habitat',
                     icon: 'habitat-Icon'
                 },
-                {
+                {                    
                     label: 'Food',
                     icon: 'nest-Icon'
                 }
-            ]               
+            ],                           
         },
         {
-            label: 'Profile',
+            
+            label: 'Profile',            
             items: [
-                {
+                {   
                     label: 'Settings',
                     icon: 'pi pi-cog'
                 },
-                {
+                {                    
                     label: 'Logout',
                     icon: 'pi pi-sign-out'
                 }
             ]
         }
     ];
-    
-    }); 
-
-}
+  }
 }

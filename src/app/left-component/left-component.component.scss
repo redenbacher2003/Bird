@@ -35,3 +35,7 @@
     }
 
   }
+  
+  :host ::ng-deep .p-panelmenu{
+    width : 12rem !important;
+}

@@ -1,0 +1,16 @@
+<div class="mb-4 flex items-center justify-center">
+    <p-card [style]="{ width: '20rem', overflow: 'hidden', height: '25rem' }">
+        <ng-template #header>
+            <img alt="Card" class="w-full" src="/specie/{{specie.thumbnail}}" />
+        </ng-template>
+        <ng-template #title>{{specie.description}}</ng-template>
+        <p>
+           <span style="font-size:small">{{ specie.shortDescription }}</span>         
+        </p>
+        <ng-template #footer>
+            <div class="flex gap-4 mt-1">
+                <p-button label="View" class="w-full" styleClass="w-full"/>
+            </div>
+        </ng-template>
+    </p-card>
+</div>
