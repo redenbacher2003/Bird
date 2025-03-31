@@ -8,8 +8,39 @@
            <span style="font-size:small">{{ specie.shortDescription }}</span>         
         </p>
         <ng-template #footer>
-            <div class="flex gap-4 mt-1">
-                <p-button label="View" class="w-full" styleClass="w-full"/>
+            <div class="gap-4 mt-1">
+                <p-button (click)="op.toggle($event)" label="View" class="w-full" styleClass="w-full"/>
+                <p-popover #op>                    
+                    <div class="gap-4 w-[25rem] popover-container">                     
+                        <div>                           
+                            <div>
+                                <p-inputgroup>
+                                    <input pInputText placeholder="{{specie.description}}"/>
+                                    <button pButton icon="pi pi-search"></button>
+                                </p-inputgroup>
+                            </div>
+                        </div>
+                        <div>                           
+                            <ul class="list-none p-0 m-0 gap-4">
+                                @for(bird of birds; track bird) {
+                                 <div class="bird-item">   
+                                    <li class="flex items-center gap-2 bird-item-list">
+                                        <div class="bird-item-container">
+                                            <div>
+                                                <img class="bird-item-image"src= "/bird/main/{{ bird.img }} "/>                                    
+                                            </div>
+                                            <div>
+                                                <span class="font-medium">{{ bird.name }}</span>
+                                                <div class="bird-item-sciName">{{ bird.scientificName }}</div>
+                                            </div>
+                                        </div>                                 
+                                    </li>
+                                </div>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </p-popover>
             </div>
         </ng-template>
     </p-card>

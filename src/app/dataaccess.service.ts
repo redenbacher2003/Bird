@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { MenuItem, specieItem } from './interface/items';
 import { map, Observable } from 'rxjs';
 import { species } from './interface/items';
+import { bird } from './interface/items';
 
 @Injectable({
   providedIn: 'root'
@@ -22,4 +23,8 @@ export class DataaccessService {
     return this.http.get<specieItem[]>(`${this.apiUrl}/GetAllSpeciesAsync`) as Observable<specieItem[]>;  
   }
 
+  getBySpecieId(specieId: number): Observable<bird[]> {
+    return this.http.get<bird[]>(`${this.apiUrl}/GetBySpecieId/${specieId}`);
+  }
+ 
 }

@@ -9,13 +9,81 @@
     width: 90%; 
   }
 
-  :host ::ng-deep .p-card-body {
-    gap: 0.1rem; 
-  }
+:host ::ng-deep .p-card-body {
+  gap: 0.1rem; 
+}
 
 
-  :host ::ng-deep .p-card-header {
-    width: 320px;
-    height: 200px;
-    overflow: hidden;
+:host ::ng-deep .p-card-header {
+  width: 320px;
+  height: 200px;
+  overflow: hidden;
+}
+
+  .bird-item-image {
+    width: 75px; 
+    height: 50px; 
+    object-fit:cover;
+    border-radius: 5px;
+}
+
+ .bird-item-container, .bird-item-container:hover{
+  display: flex;
+  align-items: center; /* Center items vertically */
+  justify-content: flex-start; /* Center items horizontally */  
+  gap: 1.0rem; /* Space between items */
+  width: 95%; /* Ensures the width is consistent on hover */ 
+  padding : 0.25rem; /* Margin for spacing between items */  
+}
+
+.bird-item-container:hover {
+  background-color: #FFF; /* Changes background color on hover */
+  color: #0078d7; /* Changes text color on hover */
+  border-radius: 5px;
+}
+
+
+.bird-item-sciName {
+  font-size: x-small;
+  color: #555; /* Lighter color for scientific name */
+}
+
+.bird-item-list {
+  cursor: pointer;
+}
+
+.popover-container {
+    background-color: rgb(235, 232, 232);
+    padding: 1rem; 
+    display: flex; 
+    flex-direction: column;
+    border-radius: 5px; 
+    min-height: 2rem;
   }
+
+.list-none {
+    max-height: 20rem;
+    overflow-y: auto; /* Enables the vertical scrollbar */
+    overflow-x: hidden; /* Hides the horizontal scrollbar */
+}
+
+
+/* The entire scrollbar track */
+::-webkit-scrollbar {
+  width: 1rem; /* Width of the scrollbar */
+}
+
+/* The scrollbar thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+  background-color: rgb(232, 235, 233);
+  border-radius: 6px; /* Rounded corners */
+  border: 2px solid #ffffff; /* Optional: Space around the thumb */
+}
+
+/* The scrollbar track (the background) */
+::-webkit-scrollbar-track {
+  background-color: #f0f0f0; /* Track color */
+  border-radius: 6px; /* Rounded corners for the track */
+}
+
+

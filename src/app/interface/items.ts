@@ -11,6 +11,16 @@ export interface MenuItem {
     active? : boolean
   }
 
+  export interface bird {
+  
+    birdId : number,
+    name : string,
+    scientificName : string,
+    specieId : number,
+    img : string,
+    added : Date
+  }
+
   export interface specieItem {
     specieId : number;
     description : string;
@@ -23,4 +33,9 @@ export interface MenuItem {
     name: string;
     code: string;
   }
+
+  export interface specieFilterOption {
+    specieName: string;
+  }
+
   

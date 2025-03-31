@@ -10,6 +10,7 @@ import { SpecieCardComponent } from '../specie-card/specie-card.component';
 import { ButtonModule } from 'primeng/button';
 import { Select } from 'primeng/select';
 import { specieShowOption } from '../interface/items';
+import { specieFilterOption } from '../interface/items'; // Importing the specieFilterOption interface
 
 @Component({
   selector: 'app-species',
@@ -19,16 +20,17 @@ import { specieShowOption } from '../interface/items';
 })
 export class SpeciesComponent implements OnInit {
   
-  selectedSpecie      : any;
-  selectedShowOption  : specieShowOption  = { name: '10', code: '10' }; // Default to 10 items
-  filteredSpecies     : string[]          = [];
-  specieShowOptions   : specieShowOption[] = [];
+  selectedSpecie      : specieFilterOption   = {specieName : ''} // Holds the selected specie from the autocomplete
+  selectedShowOption  : specieShowOption     = { name: '10', code: '10' }; // Default to 10 items
+  filteredSpecies     : specieFilterOption[] = [];
+  specieShowOptions   : specieShowOption[]   = [];
+  allSpecies          : specieItem[]         = []; // Holds all species data for filtering
 
   constructor(private route: ActivatedRoute, private dataAccessService: DataaccessService)
   {}
    species! : specieItem[];  
    ngOnInit() {
-    this.getSpecies('shuffle'); // Fetch species data when the component initializes
+    this.getSpecies('shuffle'); 
 
     this.specieShowOptions = [
       { name: '5', code: '5' },
@@ -41,7 +43,7 @@ export class SpeciesComponent implements OnInit {
     ]
    }        
 
-   getRandomItems(arr: specieItem[], count: number, method : string): specieItem[] {
+   getSpecieList(arr: specieItem[], count: number, method : string): specieItem[] {
 
     let shuffled = [...arr]; 
     if (method === 'shuffle') 
@@ -56,24 +58,33 @@ export class SpeciesComponent implements OnInit {
   }
 
   filterSpecie(event: AutoCompleteCompleteEvent) {
-    let filtered: string[] = [];
+
+    let filtered: specieFilterOption[] = [];
     let query = event.query;
-    console.log(query);
-    for (let i = 0; i < this.species.length; i++) { 
-      let specie = this.species[i]; 
+    
+    for (let i = 0; i < this.allSpecies.length; i++) { 
+      let specie = this.allSpecies[i]; 
       if (specie.description.toLowerCase().includes(query.toLowerCase())) { 
-          filtered.push(specie.description.trim()); 
+          filtered.push(
+            { specieName: specie.description.trim()} // Create a filtered object with the specieName property
+          ); 
       } 
-    }    
+    }  
     this.filteredSpecies = filtered;
-  }
+    }
 
   getSpecies(method : string) : void {
 
     let nItem =  parseInt(this.selectedShowOption.code, 10); // Default to 10 if parsing fails
     
     this.dataAccessService.getSpecies()
-    .pipe(map((data: specieItem[]) => this.getRandomItems(data, this.selectedShowOption.code === 'all' ? data.length : nItem, method)))
+    .pipe(map((data: specieItem[]) => this.getSpecieList(this.allSpecies = data, this.selectedShowOption.code === 'all' ? data.length : nItem, method)))
     .subscribe((data: specieItem[]) => {this.species = data;});
   }
+
+  getSpecieByName() : void {
+
+      this.species = this.allSpecies.filter(specie => specie.description.toLowerCase().trim() === this.selectedSpecie.specieName.toLowerCase().trim());
+      
+    }
 }

@@ -6,8 +6,9 @@
                             [suggestions]="filteredSpecies" 
                             (completeMethod)="filterSpecie($event)" 
                             optionLabel="Specie"
+                            field="specieName"
                             [size]="'small'" />     
-            <p-button icon="pi pi-search" [size]="'small'"></p-button>     
+            <p-button icon="pi pi-search" [size]="'small'" (onClick)="getSpecieByName()"></p-button>     
         </div>
         <div class="Species-refresh">
             <p-select [options]="specieShowOptions" 

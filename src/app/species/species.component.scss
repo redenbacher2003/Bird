@@ -7,6 +7,15 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
+
+  /* Style each item in the dropdown */
+  .ui-autocomplete-items .ui-autocomplete-list-item {
+    padding: 10px;
+    font-size: 14px;
+    color : blue;
+    cursor: pointer;
+    
+  }
 }
 .main-container {
   padding-bottom: 1rem;
