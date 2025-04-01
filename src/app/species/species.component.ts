@@ -14,7 +14,7 @@ import { specieFilterOption } from '../interface/items'; // Importing the specie
 
 @Component({
   selector: 'app-species',
-  imports: [FormsModule, AutoCompleteModule, NgIf, NgFor, SpecieCardComponent, ButtonModule, Select], 
+  imports: [FormsModule, AutoCompleteModule, NgIf, NgFor, SpecieCardComponent, ButtonModule, Select], // Importing necessary modules and components
   templateUrl: './species.component.html',
   styleUrl: './species.component.scss'
 })

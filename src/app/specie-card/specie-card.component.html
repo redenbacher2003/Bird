@@ -13,12 +13,23 @@
                 <p-popover #op>                    
                     <div class="gap-4 w-[25rem] popover-container">                     
                         <div>                           
-                            <div>
-                                <p-inputgroup>
-                                    <input pInputText placeholder="{{specie.description}}"/>
-                                    <button pButton icon="pi pi-search"></button>
-                                </p-inputgroup>
-                            </div>
+                        
+                            <p-autocomplete [(ngModel)]="selectedBird" 
+                                [forceSelection]="true" 
+                                [suggestions]="filteredBirds" 
+                                (completeMethod)="filterBirds($event)" 
+                                optionLabel="Bird"
+                                field="birdName"
+                                [size]="'small'"
+                                (onClear)="resetBirds()"
+                                placeholder="{{specie.description}}" />  
+
+                            <!--<p-inputgroup>
+                                <input pInputText placeholder="{{specie.description}}"/>
+                                <button pButton icon="pi pi-search"></button>
+                            </p-inputgroup>
+                            -->
+                        
                         </div>
                         <div>                           
                             <ul class="list-none p-0 m-0 gap-4">

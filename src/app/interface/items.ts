@@ -38,4 +38,7 @@ export interface MenuItem {
     specieName: string;
   }
 
+  export interface birdFilterOption {
+    birdName: string;
+  }
   
