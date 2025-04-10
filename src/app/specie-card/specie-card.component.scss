@@ -13,6 +13,9 @@
   gap: 0.1rem; 
 }
 
+ input { 
+  width: 20rem;
+}
 
 :host ::ng-deep .p-card-header {
   width: 320px;
