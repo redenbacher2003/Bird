@@ -10,6 +10,7 @@ import { DataaccessService } from '../dataaccess.service'; // Importing the data
 import { AutoCompleteCompleteEvent, AutoCompleteModule } from 'primeng/autocomplete';
 import { birdFilterOption } from '../interface/items'; // Importing the bird filter interface
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-specie-card',
@@ -28,7 +29,7 @@ export class SpecieCardComponent implements OnInit {
   @Input() specie!: specieItem;
 
   
-  constructor(private dataAccessService: DataaccessService) { } // Injecting the data access service
+  constructor(private dataAccessService: DataaccessService, private router: Router) { } // Injecting the data access service
   selectedBird    : birdFilterOption   = {birdName : ''} // Holds the selected bird from the autocomplete
   filteredBirds   : birdFilterOption[] = [];
   birds           : bird[] = []; // This will hold the birds data fetched from the service
@@ -60,5 +61,10 @@ export class SpecieCardComponent implements OnInit {
     
     resetBirds() {
       this.birds = [...this.allBirds]; 
+    }
+
+    onBirdClick(birdId: number) {
+      console.log('Bird ID:', birdId);
+      this.router.navigate(['/bird', birdId]); 
     }
   }

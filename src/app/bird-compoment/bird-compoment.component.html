@@ -1,78 +1,89 @@
 <div class="bird-component-container">
     <!-- Header Image -->
-    <div class="header-image">
-        <h2>Bird Specie Name</h2>  
-    </div>
-    
   
     <!-- Content Section -->
     <div class="content-section">
       <!-- Circular Bird Image -->
-      <div class="bird-image-container">
-        <img src="/specie/owl.jpg" alt="Bird Specie" class="bird-image" />
+        <div class="bird-left-container"> 
+          <div class="bird-image-container">
+            <img src="/bird/main/{{birdWithFact.img}}" alt="Bird Specie" class="bird-image" />                 
+          </div>
+
+          <div class="bird-info-container">
+            <div class="bird-fact-container">
+              <img src="/birdLabel.png" alt="Location" class="location-icon" />
+              <p class="bird-label">Name</p>
+            </div>
+            <p class="primary-label label-bold indent-1rem">{{birdWithFact.name}}</p>
+            <div class="bird-fact-container">
+              <img src="/birdScientific.png" alt="Location" class="location-icon" />
+              <p class="bird-label">Scientific Name</p>            
+            </div>
+            <p class="secondary-label label-bold indent-1rem">{{birdWithFact.scientificName}}</p>
+            <div class="bird-fact-container">
+              <img src="/birdMeasure.png" alt="Location" class="location-icon" />
+              <p class="bird-label">Size in Inches</p>            
+            </div>
+            <p class="secondary-label label-bold indent-1rem">{{birdWithFact.birdFact?.sizeInInches}}</p>
+          </div>
+        </div>
+      <div class="card flex justify-content-center">
+        <p-accordion [value]="['0']" [multiple]="true">
+            <p-accordion-panel value="0">
+                <p-accordion-header>
+                  <span class="flex items-center gap-2 w-full">
+                    <p-avatar image="/information.png" shape="circle" />
+                    <span class="font-bold whitespace-nowrap">Description</span>                 
+                </span>
+                </p-accordion-header>
+                <p-accordion-content>
+                    <p class="m-0">
+                      {{birdWithFact.birdFact?.shortDescription}}
+                    </p>
+                </p-accordion-content>
+            </p-accordion-panel>
+            <p-accordion-panel value="1">
+                <p-accordion-header>
+                  <span class="flex items-center gap-2 w-full">
+                    <p-avatar image="/starling-box.png" shape="circle" />
+                    <span class="font-bold whitespace-nowrap">Habitat</span>                 
+                  </span>
+                </p-accordion-header>
+                <p-accordion-content>
+                    <p class="m-0">
+                      {{birdWithFact.birdFact?.habitat}}
+                    </p>
+                </p-accordion-content>
+            </p-accordion-panel>
+            <p-accordion-panel value="2">
+                <p-accordion-header>
+                  <span class="flex items-center gap-2 w-full">
+                    <p-avatar image="/nest.png" shape="circle" />
+                    <span class="font-bold whitespace-nowrap">Food</span>                 
+                  </span>
+                </p-accordion-header>
+                <p-accordion-content>
+                    <p class="m-0">
+                      {{birdWithFact.birdFact?.food}}
+                    </p>
+                </p-accordion-content>
+            </p-accordion-panel>
+            <p-accordion-panel value="3">
+              <p-accordion-header>
+                <span class="flex items-center gap-2 w-full">
+                  <p-avatar image="/fact.png" shape="circle" />
+                  <span class="font-bold whitespace-nowrap">Key Facts</span>                 
+                </span>
+              </p-accordion-header>
+              <p-accordion-content>
+                  <p class="m-0">
+                    {{birdWithFact.birdFact?.keyFact}}
+                  </p>
+              </p-accordion-content>
+          </p-accordion-panel>
+        </p-accordion>
       </div>
-    </div>    
-      
-    <div class="content-container">
-      <div id="grid">
-        <div id="item1">
-          <p-fieldset>
-            <ng-template #header>
-               <div class="flex items-center gap-2 px-2">
-                   <p-avatar
-                       image="/information.png"/>
-                   <span class="font-bold">Description</span>
-               </div>
-             </ng-template>
-             <p class="m-0">
-               The Canada Goose, Branta canadensis maxima, bred from central Manitoba to Kentucky but was nearly driven extinct in the early 1900s. Programs to reestablish the subspecies to its original range were in many places so successful that the geese have become a nuisance in many urban and suburban areas.
-             </p>
-           </p-fieldset>
-        </div>
-        <div id="item2">
-          <p-fieldset>
-            <ng-template #header>
-                <div class="flex items-center gap-2 px-2">
-                    <p-avatar
-                        image="/starling-box.png"/>
-                    <span class="font-bold">Habitat</span>
-                </div>
-            </ng-template>
-            <p class="m-0">
-              While they are breeding, these geese live along the tundra in flood plains, ponds, or lakes. Most do not breed on the coast, but they do live near the coasts.
-            </p>
-          </p-fieldset>
-  
-        </div>
-        <div id="item3">
-          <p-fieldset>
-            <ng-template #header>
-                <div class="flex items-center gap-2 px-2">
-                    <p-avatar
-                        image="/nest.png"/>
-                    <span class="font-bold">Food</span>
-                </div>
-            </ng-template>
-            <p class="m-0">
-              Wood ducks eat nuts, seeds, vegetables, berries, insects, and they are predominantly omnivores.
-            </p>
-          </p-fieldset>
-        </div>
-        <div id="item4">
-          <p-fieldset>
-            <ng-template #header>
-              <div class="flex items-center gap-2 px-2">
-                  <p-avatar
-                      image="/fact.png"/>
-                  <span class="font-bold">Key Facts</span>
-              </div>
-            </ng-template>
-            <p class="m-0">
-              The lesser snow goose stands 64 to 79 cm (25 to 31 in) tall and weighs 2.05 to 2.7 kg (4.5 to 6.0 lb). The larger subspecies, the greater snow goose (C. c. atlanticus), nests in northeastern Canada. It averages about 3.2 kg (7.1 lb) and 79 cm (31 in), but can weigh up to 4.5 kg (9.9 lb). 
-            </p>
-          </p-fieldset>
-        </div>
-      </div>
- 
-    </div>
+    </div>     
+
+    
 </div>

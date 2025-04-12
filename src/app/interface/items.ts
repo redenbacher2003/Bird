@@ -42,3 +42,23 @@ export interface MenuItem {
     birdName: string;
   }
   
+  export interface birdWithFact{
+    birdId : number,
+    name : string,  
+    scientificName : string,
+    specieId : number,
+    img : string,
+    added: Date,
+    birdFact? : BirdFact
+    }
+
+   export interface BirdFact {      
+      birdFactId : number,
+      birdId : number,
+      shortDescription : string,
+      sizeInInches : number,
+      keyFact : string,
+      habitat : string,
+      food : string
+    }
+    

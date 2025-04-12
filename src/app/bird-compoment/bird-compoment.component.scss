@@ -6,60 +6,82 @@
     flex-direction: column;
     gap: 1rem;
   }
-  
-  .header-image {
-    width: 100%;
-    height: 150px;
-    overflow: hidden;
-    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%); /* Example: Trapezoid shape */
-    z-index: -1;    
-    background-image: url("/birdheader/header.jpg");
-    border-radius: 5px;
 
+  .bird-left-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
-  
-  .header-image h2{
-    padding-left: 1rem;
+
+  .bird-info-container  {
+    p{
+      line-height: 1.65; /* Improve readability */
+      word-wrap: break-word; /* Ensures long words wrap properly */
+      overflow-wrap: break-word; /* Modern alternative for word wrapping */
+      margin: 0; /* Remove default margins */
+    }
+  }
+
+  .bird-fact-container {
+    display: flex;
+    gap : 0.5rem;
+    align-items: center;
+  }
+
+  .indent-1rem {
+    padding-left: var(--label-indent);
+  }
+
+  .primary-label {
+    font-size: var(--label-primary-font-size);
+  }
+
+  .secondary-label {
+    font-size: var(--label-secondary-font-size);
+  }
+
+  .bird-label {
+      color: var(--label-description-font-color);
+      font-size: var(--label-description-font-size);
+  }
+   .header-label {    
     color: #ccc;
-}
+  }
 
-
-  .header-img {
-    width: 100%;
-    height: 100%;
-    object-fit:cover;
+  .label-bold {
+    font-weight: var(--label-bold-font-weight);
   }
   
   .content-section {
     display: flex;
-    align-items: center;
     gap: 1rem;
-    padding: 1rem;
   }
   
   .bird-image-container {
-    flex-shrink: 0;
-    width: 100px;
-    height: 100px;
+    width: 300px;
+    height: 300px;
     border-radius:5%;
     overflow: hidden;
-    border: 2px solid #ccc;
-    margin-top: -90px;
+    border: 2px solid #ccc;    
+    min-width: 200px;
   }
   
   .bird-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; 
   }
-  
+
+  .items-center {
+    display: flex;
+    align-items: center;
+  }
 
   
   .text-content h2 {
     margin: 0;
     font-size: 1.5rem;
   }
-
 
   :host ::ng-deep {
     
@@ -96,38 +118,3 @@
     }
   }
 
-.content-container
-{
-  display: flex;
-  gap : 1rem;
-  height: 100%;
-}
-
-.gallery-section {
-  border-radius: 5px;
-  border : 1px solid gray;
-  min-width: 20rem;
-}
-
-
-#grid {
-  display: inline-grid;
-  height: 200px;
-  grid-template-columns: 500px 500px ;
-  grid-template-rows: 200px 200px 200px; /* Two rows of 200px each */
-  grid-gap : 1rem;
-  grid-template-areas: 
-    "item1 item2"
-    "item3 item4"
-    "item5 item6";
-  grid-auto-flow: dense;
-}
-
-#item1 {
-  
-  grid-row : 1/3
-}
-#item4 {
- 
-  grid-row : 4/2
-}

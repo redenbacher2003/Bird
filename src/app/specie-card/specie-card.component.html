@@ -29,7 +29,7 @@
                             <ul class="list-none p-0 m-0 gap-4">
                                 @for(bird of birds; track bird) {
                                  <div class="bird-item">   
-                                    <li class="flex items-center gap-2 bird-item-list">
+                                    <li class="flex items-center gap-2 bird-item-list" (click)="onBirdClick(bird.birdId)">
                                         <div class="bird-item-container">
                                             <div>
                                                 <img class="bird-item-image"src= "/bird/main/{{ bird.img }} "/>                                    

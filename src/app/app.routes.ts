@@ -8,7 +8,7 @@ export const routes: Routes = [
     component: HomeComponent,
     children: [
       { path: 'species', component: SpeciesComponent },
-      { path : 'bird', component : BirdCompomentComponent}
+      { path: 'bird/:id', component: BirdCompomentComponent }       
     ]
   }
 ];

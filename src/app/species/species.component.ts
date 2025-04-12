@@ -11,10 +11,11 @@ import { ButtonModule } from 'primeng/button';
 import { Select } from 'primeng/select';
 import { specieShowOption } from '../interface/items';
 import { specieFilterOption } from '../interface/items'; // Importing the specieFilterOption interface
+import { ScrollTopModule } from 'primeng/scrolltop';
 
 @Component({
   selector: 'app-species',
-  imports: [FormsModule, AutoCompleteModule, NgIf, NgFor, SpecieCardComponent, ButtonModule, Select], // Importing necessary modules and components
+  imports: [FormsModule, AutoCompleteModule, NgIf, NgFor, SpecieCardComponent, ButtonModule, Select, ScrollTopModule], // Importing necessary modules and components
   templateUrl: './species.component.html',
   styleUrl: './species.component.scss'
 })
