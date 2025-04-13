@@ -8,7 +8,6 @@
           <div class="bird-image-container">
             <img src="/bird/main/{{birdWithFact.img}}" alt="Bird Specie" class="bird-image" />                 
           </div>
-
           <div class="bird-info-container">
             <div class="bird-fact-container">
               <img src="/birdLabel.png" alt="Location" class="location-icon" />
@@ -22,13 +21,13 @@
             <p class="secondary-label label-bold indent-1rem">{{birdWithFact.scientificName}}</p>
             <div class="bird-fact-container">
               <img src="/birdMeasure.png" alt="Location" class="location-icon" />
-              <p class="bird-label">Size in Inches</p>            
+              <p class="bird-label">Average Size</p>            
             </div>
-            <p class="secondary-label label-bold indent-1rem">{{birdWithFact.birdFact?.sizeInInches}}</p>
+            <p class="secondary-label label-bold indent-1rem">{{birdWithFact.birdFact?.sizeInInches}}"</p>
           </div>
         </div>
       <div class="card flex justify-content-center">
-        <p-accordion [value]="['0']" [multiple]="true">
+        <p-accordion [value]="['0','1','2','3']" [multiple]="true">
             <p-accordion-panel value="0">
                 <p-accordion-header>
                   <span class="flex items-center gap-2 w-full">

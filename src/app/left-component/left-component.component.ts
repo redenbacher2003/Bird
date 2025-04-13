@@ -37,8 +37,7 @@ export class LeftComponentComponent implements OnInit {
                 {
                     
                     label: 'Name',
-                    icon: 'category-Icon',
-                    routerLink: 'bird', // This will route to the bird component when clicked
+                    icon: 'category-Icon'
                 },
                 {                       
                     label: 'Habitat',
