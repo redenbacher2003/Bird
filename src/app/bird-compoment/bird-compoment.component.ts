@@ -19,13 +19,14 @@ export class BirdCompomentComponent implements OnInit {
   constructor(private dataAccessService: DataaccessService, private route: ActivatedRoute) { }
   birdWithFact! : birdWithFact; 
   
-  ngOnInit(): void {
+  ngOnInit(): void {    
     const idParam = this.route.snapshot.paramMap.get('id');
     this.birdId = idParam ? parseInt(idParam, 10) : 0; 
     this.dataAccessService.getBirdWithFactById(this.birdId).subscribe((data: birdWithFact) => {
       if (data) { this.birdWithFact = data;}
      } 
     )
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
       

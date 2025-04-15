@@ -61,4 +61,10 @@ export interface MenuItem {
       habitat : string,
       food : string
     }
+
+    export interface BirdAppStats {
+      totalBirds : number;   
+      totalSpecies : number;
+      birdsWithFact : BirdFact[];
+    }
     

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { birdWithFact, MenuItem, specieItem } from './interface/items';
+import { BirdAppStats, birdWithFact, MenuItem, specieItem } from './interface/items';
 import { map, Observable } from 'rxjs';
 import { species } from './interface/items';
 import { bird } from './interface/items';
@@ -29,6 +29,10 @@ export class DataaccessService {
  
   getBirdWithFactById(birdId: number): Observable<birdWithFact> {
     return this.http.get<birdWithFact>(`${this.apiUrl}/GetBirdWithFactById/${birdId}`);
+  }
+
+  getBirdAppStats(): Observable<BirdAppStats> {
+    return this.http.get<BirdAppStats>(`${this.apiUrl}/GetStats`) as Observable<BirdAppStats>;
   }
  
 }
