@@ -1,10 +1,20 @@
-<div class="stat-count flex flex-column gap-2 justify-content-center align-items-center">
+<div class="stats-container myflex">
     <div class="specie-count item-count">
-        <h3>Total Species</h3>
-        <h6>{{birAppStats.totalSpecies}}</h6>
+        <div class="stat-header">
+            <p>Species</p>
+            <i class="specie-Icon"></i>
+        </div>
+        <div class="stat-detail myflex">
+            <span style="font-size: xx-large;"><h1>{{birAppStats.totalSpecies}}</h1></span>
+        </div>
     </div>
     <div class="bird-count item-count">
-        <h3>Total Birds</h3>
-        <h6>{{birAppStats.totalBirds}}</h6>
+        <div class="stat-header">
+            <p>Birds</p>
+            <i class="bird-Icon"></i>
+        </div>
+        <div class="stat-detail myflex">
+            <span style="font-size: xx-large;"><h1>{{birAppStats.totalBirds}}</h1></span>
+        </div>
     </div>
 </div>

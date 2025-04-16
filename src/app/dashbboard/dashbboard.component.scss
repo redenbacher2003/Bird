@@ -1,0 +1,54 @@
+.myflex {
+    display: var(--display-flex);
+    gap: var(--display-flex-gap);
+}
+.item-count {
+    gap: var(--display-flex-gap);
+    margin: 0;
+    padding: 0;
+    color: var(--label-description-font-color);    
+    background-color: #F0EADC;
+    width: 10rem;
+    border-radius: 18px; 
+}
+
+.stat-detail {
+    display: var(--display-flex);
+    justify-content: center;
+}
+.stat-header {
+    border: 1px solid rgb(211, 208, 208);
+    background-color: #FFF;
+    height: 3rem;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    font-size: smaller;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}   
+
+
+:host ::ng-deep {
+    .bird-Icon{
+      width: 1rem;
+      height: 1rem;
+      background-image : url("/category.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .specie-Icon {
+      width: 1rem;
+      height: 1rem;
+      background-image: url("/specie.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }    
+  }
+  
