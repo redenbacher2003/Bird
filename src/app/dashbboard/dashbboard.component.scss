@@ -1,3 +1,4 @@
+
 .myflex {
     display: var(--display-flex);
     gap: var(--display-flex-gap);
@@ -9,7 +10,7 @@
     color: var(--label-description-font-color);    
     background-color: #F0EADC;
     width: 10rem;
-    border-radius: 18px; 
+    border-radius: 8px; 
 }
 
 .stat-detail {
@@ -20,8 +21,8 @@
     border: 1px solid rgb(211, 208, 208);
     background-color: #FFF;
     height: 3rem;
-    border-top-left-radius: 18px;
-    border-top-right-radius: 18px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
     display: flex;
     align-items: center; 
     justify-content: center; 
@@ -32,6 +33,21 @@
     padding-right: 1rem;
 }   
 
+.stats-container {   
+    display: flex;
+    flex-direction: column;
+    gap: 0.50rem;
+    width: 19%;
+}
+
+.bird-carousel-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.50rem;
+    border-radius: 1rem;  
+    background-color:  #F0EADC;
+    width: 89%;
+}
 
 :host ::ng-deep {
     .bird-Icon{
@@ -50,5 +66,56 @@
       background-repeat: no-repeat;
       background-size: cover;
     }    
+
+    .view-Icon {
+      width: 1rem;
+      height: 1rem;
+      background-image: url("/research-center.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
   }
-  
+  .carousel-container {
+    gap: 0.5rem;
+    margin-top: 10px;
+    border: 1px solid #FFF;
+    border-radius: 5px;
+    background-color: white !important;
+
+  }
+
+:host ::ng-deep .bird-item-image {
+    width: 18rem; 
+    height: 13rem; 
+    object-fit:cover;
+    border-radius: 5px;
+}
+
+.carousel-container {
+  width :20rem;
+  display: flex;
+  background-color: #F0EADC;
+  border-radius: 5px;
+  display: flex; /* Enable Flexbox */
+  align-items: center; /* Vertically center the item */
+  justify-content: center; /* Horizontally center the item (optional) */
+
+  padding : 10px; 
+  flex-direction: column;  
+}
+
+.bird-item-fact-container {
+  display: flex; /* Enable Flexbox */
+  align-items: center; /* Vertically align items */
+  justify-content: space-between; /* Position items on opposite ends */
+  width: 100%; /* Ensure the container spans the full width */
+  padding: 0.5rem; /* Optional: Add padding for spacing */
+}
+
+.bird-img-name {
+  display: flex;
+  align-items: center; /* Vertically center the items */
+  gap: 0.5rem; /* Space between the image and name */
+}

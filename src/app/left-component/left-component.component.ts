@@ -24,6 +24,12 @@ export class LeftComponentComponent implements OnInit {
                                                        
     this.items = [
         {            
+            label: 'Home',
+            items: [],            
+            icon: 'home-Icon',
+            routerLink: 'dashboard'
+        },
+        {            
             label: 'Species',
             items: [],            
             icon: 'specie-Icon',
@@ -32,7 +38,7 @@ export class LeftComponentComponent implements OnInit {
         {
             
             label: 'Bird Search By',
-            icon: 'pi pi-search',            
+            icon: 'binoculars-Icon',            
             items: [
                 {
                     
@@ -52,14 +58,15 @@ export class LeftComponentComponent implements OnInit {
         {
             
             label: 'Profile',            
+            icon: 'profile-Icon',
             items: [
                 {   
                     label: 'Settings',
-                    icon: 'pi pi-cog'
+                    icon: 'settings-Icon'
                 },
                 {                    
                     label: 'Logout',
-                    icon: 'pi pi-sign-out'
+                    icon: 'logout-Icon'
                 }
             ]
         }

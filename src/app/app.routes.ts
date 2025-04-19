@@ -8,7 +8,10 @@ export const routes: Routes = [
     path: '',
     component: DashbboardComponent // Set DashbboardComponent as the default route
   },
-
+  {
+    path: 'dashboard',
+    component: DashbboardComponent // Set DashbboardComponent as the default route
+  },
   { path: 'species', component: SpeciesComponent },
   { path: 'bird/:id', component: BirdCompomentComponent },
   {

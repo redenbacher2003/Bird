@@ -30,21 +30,20 @@
     border-radius: 5px;
 }
 
- .bird-item-container, .bird-item-container:hover{
+.bird-item-container {
   display: flex;
   align-items: center; /* Center items vertically */
-  justify-content: flex-start; /* Center items horizontally */  
+  justify-content: flex-start; /* Align items to the left */
   gap: 1.0rem; /* Space between items */
-  width: 95%; /* Ensures the width is consistent on hover */ 
-  padding : 0.25rem; /* Margin for spacing between items */  
+  width: 95%; /* Ensures the width is consistent on hover */
+  padding: 0.25rem; /* Margin for spacing between items */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: color 0.3s ease; /* Smooth transition for text color */
 }
 
 .bird-item-container:hover {
-  background-color: #FFF; /* Changes background color on hover */
-  color: #0078d7; /* Changes text color on hover */
-  border-radius: 5px;
+  color: #007bff; /* Change text color on hover (e.g., blue) */
 }
-
 
 .bird-item-sciName {
   font-size: x-small;

@@ -1,20 +1,50 @@
-<div class="stats-container myflex">
-    <div class="specie-count item-count">
-        <div class="stat-header">
-            <p>Species</p>
-            <i class="specie-Icon"></i>
+<div class="main-container myflex">
+
+    <div class="stats-container">
+        <div class="specie-count item-count">
+            <div class="stat-header">
+                <p>Species</p>
+                <i class="specie-Icon"></i>
+            </div>
+            <div class="stat-detail myflex">
+                <span style="font-size: xx-large;"><h1>{{birAppStats.totalSpecies}}</h1></span>
+            </div>
         </div>
-        <div class="stat-detail myflex">
-            <span style="font-size: xx-large;"><h1>{{birAppStats.totalSpecies}}</h1></span>
+        <div class="bird-count item-count">
+            <div class="stat-header">
+                <p>Birds</p>
+                <i class="bird-Icon"></i>
+            </div>
+            <div class="stat-detail myflex">
+                <span style="font-size: xx-large;"><h1>{{birAppStats.totalBirds}}</h1></span>
+            </div>
         </div>
     </div>
-    <div class="bird-count item-count">
-        <div class="stat-header">
-            <p>Birds</p>
-            <i class="bird-Icon"></i>
+
+    <div class="bird-carousel-container item-count">
+        <div class="bird-carousel-header stat-header">
+            <p>Featured Birds</p>
         </div>
-        <div class="stat-detail myflex">
-            <span style="font-size: xx-large;"><h1>{{birAppStats.totalBirds}}</h1></span>
+        <div class="bird-carousel-sub-header">
+            <p-carousel [value]="this.featureBirds" [circular]="false" [circular]="true" [numVisible]="4" [numScroll]="5" [responsiveOptions]="responsiveOptions" [circular]="true" >
+                <ng-template let-bird #item>
+                    <div class="carousel-container">
+                        <div class="bird-item-container">                            
+                            <img src="/bird/main/{{bird.img}}"  [alt]="bird.name" class="bird-item-image" />
+                        </div>
+                        <div class="bird-item-fact-container">
+                            <div class ="bird-img-name">
+                                <img src="/birdLabel.png" alt="Location" class="location-icon" />
+                                {{ bird.name }}
+                            </div>
+                            <div class="bird-item-fact-button-container">
+                                <button pButton type="button" label="View" class="bird-item-button" (click)="onBirdClick(bird.birdId)" ></button>
+                            </div>  
+                        </div>                         
+                    </div>
+                </ng-template>
+            </p-carousel>
         </div>
     </div>
+
 </div>

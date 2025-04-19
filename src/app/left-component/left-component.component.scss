@@ -34,6 +34,51 @@
       background-size: cover;
     }
 
+    .home-Icon {
+      width: 1rem;
+      height: 1rem;
+      background-image: url("/home.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .binoculars-Icon {
+      width: 1rem;
+      height: 1rem;
+      background-image: url("/binoculars.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .profile-Icon {
+      width: 1rem;
+      height: 1rem;
+      background-image: url("/profile.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .settings-Icon {
+      width: 1rem;
+      height: 1rem;
+      background-image: url("/settings.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .logout-Icon {
+      width: 1rem;
+      height: 1rem;
+      background-image: url("/logout.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
   }
   
   :host ::ng-deep .p-panelmenu{
