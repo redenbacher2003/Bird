@@ -43,7 +43,8 @@ export class LeftComponentComponent implements OnInit {
                 {
                     
                     label: 'Name',
-                    icon: 'category-Icon'
+                    icon: 'category-Icon',
+                    routerLink: 'bird-search'
                 },
                 {                       
                     label: 'Habitat',

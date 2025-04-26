@@ -1,1 +1,11 @@
-<p>bird-preview works!</p>
+<div class="search-parent-container myflex">
+    <div class="card flex flex-wrap justify-center items-end gap-4">
+        <p-floatlabel variant="on">
+            <input pInputText id="on_label" [(ngModel)]="value3" autocomplete="off" />
+            <label for="on_label">On Label</label>
+        </p-floatlabel>
+    </div>
+    <div class="card flex justify-center flex-wrap gap-4">
+        <p-splitbutton label="Search" (onClick)="search()" [model]="items" severity="success" />
+    </div>
+</div> 
