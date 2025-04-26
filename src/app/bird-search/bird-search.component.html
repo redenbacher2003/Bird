@@ -12,10 +12,14 @@
     </div> 
 
     <div class="card" ngiIf="searchResults.length > 0">
-        <p-table [value]="searchResults" [tableStyle]="{ 'min-width': '60rem' }">
+        <p-table [value]="searchResults"
+                 selectionMode="single" 
+                 [tableStyle]="{ 'min-width': '60rem' }"
+                 [paginator]="true"
+                 [rows]="4">
             <ng-template #caption>
                 <div class="flex items-center justify-between">
-                    <span class="text-xl font-bold">Search Results</span>
+                    <span>Search Results</span>
                 </div>
             </ng-template>
             <ng-template #header>
