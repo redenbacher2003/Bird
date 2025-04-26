@@ -1,11 +1,43 @@
-<div class="search-parent-container myflex">
-    <div class="card flex flex-wrap justify-center items-end gap-4">
-        <p-floatlabel variant="on">
-            <input pInputText id="on_label" [(ngModel)]="value3" autocomplete="off" />
-            <label for="on_label">On Label</label>
-        </p-floatlabel>
+<div class="search-main">
+    <div class="search-container myflex">
+        <div class="input-container">
+            <p-floatlabel>
+                <input id="searchBy" [(ngModel)]="searchValue" pInputText/>
+                <label for="searchBy" ngModel="">Search</label>
+            </p-floatlabel>
+        </div>
+        <div class="search-button-container">
+            <p-splitbutton label="{{this.selectSearchBy}}" (onClick)="search()" [model]="items" severity="success" />
+        </div>
+    </div> 
+
+    <div class="card" ngiIf="searchResults.length > 0">
+        <p-table [value]="searchResults" [tableStyle]="{ 'min-width': '60rem' }">
+            <ng-template #caption>
+                <div class="flex items-center justify-between">
+                    <span class="text-xl font-bold">Search Results</span>
+                </div>
+            </ng-template>
+            <ng-template #header>
+                <tr>
+                    <th>Name</th>
+                    <th>Scientific Name</th>
+                    <th>Preview</th>
+                </tr>
+            </ng-template>
+            <ng-template #body let-bird>
+                <tr>
+                    <td>{{ bird.name }}</td>
+                    <td>{{ bird.scientificName }}</td>
+                    <td>
+                        <img
+                            src="/bird/main/{{bird.img}}"
+                            [alt]="bird.name"
+                            class="bird-item-image"
+                        />
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
     </div>
-    <div class="card flex justify-center flex-wrap gap-4">
-        <p-splitbutton label="Search" (onClick)="search()" [model]="items" severity="success" />
-    </div>
-</div> 
+</div>

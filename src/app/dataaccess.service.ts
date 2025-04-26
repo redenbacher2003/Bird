@@ -35,4 +35,7 @@ export class DataaccessService {
     return this.http.get<BirdAppStats>(`${this.apiUrl}/GetStats`) as Observable<BirdAppStats>;
   }
  
+  getBirdsBy(filterBy: string, filterValue: string): Observable<birdWithFact[]> {
+    return this.http.get<birdWithFact[]>(`${this.apiUrl}/GetBirdsBy?filterBy=${filterBy}&filterValue=${filterValue}`) as Observable<birdWithFact[]>;
+  }
 }

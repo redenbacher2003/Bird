@@ -4,28 +4,39 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { FloatLabel } from 'primeng/floatlabel';
 import { MenuItem } from 'primeng/api';
+import { DataaccessService } from '../dataaccess.service';
+import { Router } from '@angular/router';
+import { TableModule } from 'primeng/table';
+import { birdWithFact } from '../interface/items';
+import { ButtonModule } from 'primeng/button';
 @Component({
-  imports: [SplitButtonModule, FormsModule, InputTextModule, FloatLabel], 
+  imports: [SplitButtonModule, FormsModule, InputTextModule, FloatLabel, TableModule, ButtonModule], 
   templateUrl: './bird-search.component.html',
   styleUrl: './bird-search.component.scss'
 })
 export class BirdSearchComponent {
 
-  items: MenuItem[] = [];
-  value3: string | undefined;
-  constructor() { 
+  items: MenuItem[] = []; 
+  selectSearchBy: string | undefined;
+  searchValue : string | undefined;
+  searchResults: birdWithFact[] = [];
+
+  constructor(private dataAccessService : DataaccessService, private router: Router) { 
  
   this.items = [
-      { label: 'Name'},
-      { label: 'Food'},
-      { label: 'Habitat'}
+      { label: 'Name', command: () => this.selectSearchBy = 'Name' },
+      { label: 'Food', command: () => this.selectSearchBy = 'Food' },
+      { label: 'Habitat', command: () => this.selectSearchBy = 'Habitat' }
     ];
+    this.selectSearchBy = 'Name';
   }
 
-  search() : void{
-  
+  search() : void {
+    if (this.searchValue) {
+      this.dataAccessService.getBirdsBy(this.selectSearchBy!.toLowerCase(), this.searchValue!).subscribe((data) => {
+        this.searchResults = data;
+      })
+    }
   }
-
-
 }
 
