@@ -1,4 +1,4 @@
-<div class="search-main">
+<div class="search-main">   
     <div class="search-container myflex">
         <div class="input-container">
             <p-floatlabel>
@@ -10,8 +10,8 @@
             <p-splitbutton label="{{this.selectSearchBy}}" (onClick)="search()" [model]="items" severity="success" />
         </div>
     </div> 
-
-    <div class="card" ngiIf="searchResults.length > 0">
+    <p-toast/>
+    <div class="card" *ngIf="searchResults.length > 0">
         <p-table [value]="searchResults"
                  selectionMode="single" 
                  [tableStyle]="{ 'min-width': '60rem' }"
