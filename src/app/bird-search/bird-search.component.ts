@@ -11,8 +11,8 @@ import { birdWithFact } from '../interface/items';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule, NgIf } from '@angular/common'; 
 import { Toast } from 'primeng/toast';
-import { Ripple } from 'primeng/ripple';
 import { MessageService } from 'primeng/api';
+import { TableRowCollapseEvent, TableRowExpandEvent } from 'primeng/table';
 @Component({
   imports: [SplitButtonModule,
             FormsModule,
@@ -21,8 +21,7 @@ import { MessageService } from 'primeng/api';
             TableModule,
             ButtonModule,
             NgIf,
-            Toast,
-            Ripple], 
+            Toast], 
   templateUrl: './bird-search.component.html',
   styleUrl: './bird-search.component.scss',
   providers: [MessageService]

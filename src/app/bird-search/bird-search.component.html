@@ -16,7 +16,8 @@
                  selectionMode="single" 
                  [tableStyle]="{ 'min-width': '60rem' }"
                  [paginator]="true"
-                 [rows]="4">
+                 [rows]="4" 
+                 dataKey="birdId">
             <ng-template #caption>
                 <div class="flex items-center justify-between">
                     <span>Search Results</span>
@@ -24,6 +25,7 @@
             </ng-template>
             <ng-template #header>
                 <tr>
+                    <th style="width: 5rem"></th>
                     <th>Name</th>
                     <th>Scientific Name</th>
                     <th>Preview</th>
@@ -31,6 +33,9 @@
             </ng-template>
             <ng-template #body let-bird>
                 <tr>
+                    <td>
+                        <p-button type="button" pRipple [pRowToggler]="bird" [text]="true" [rounded]="true" [plain]="true" [icon]="'pi pi-chevron-down'" />
+                    </td>
                     <td>{{ bird.name }}</td>
                     <td>{{ bird.scientificName }}</td>
                     <td>
@@ -41,6 +46,11 @@
                         />
                     </td>
                 </tr>
+            </ng-template>
+            <ng-template #expandedrow let-bird>
+                <div>
+                    <p>{{bird.birdFact.food}}</p>
+                 </div>   
             </ng-template>
         </p-table>
     </div>

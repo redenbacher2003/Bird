@@ -15,12 +15,12 @@ export class DashbboardComponent implements OnInit {
 responsiveOptions: CarouselResponsiveOptions[]|undefined;
 
 constructor(private dataAccessService : DataaccessService, private router: Router) { }
-birAppStats! : BirdAppStats;
-featureBirds: BirdFact[] = [];
+birdAppStats! : BirdAppStats;
+featureBirds : BirdFact[] = [];
 ngOnInit(): void {
   this.dataAccessService.getBirdAppStats().subscribe((data: BirdAppStats) => {
-    this.birAppStats = data;
-    this.featureBirds = this.birAppStats.birdsWithFact;});
+    this.birdAppStats = data;
+    this.featureBirds = this.birdAppStats.birdsWithFact;});
     window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 

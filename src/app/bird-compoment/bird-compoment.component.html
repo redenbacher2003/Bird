@@ -5,8 +5,7 @@
     <div class="content-section">
       <!-- Circular Bird Image -->
         <div class="bird-left-container"> 
-          <div class="bird-image-container">
-            <img src="/bird/main/{{birdWithFact.img}}" alt="Bird Specie" class="bird-image" />                 
+          <div class="bird-image-container" style="background-image: url('/bird/main/{{birdWithFact.img}}')">
           </div>
           <div class="bird-info-container">
             <div class="bird-fact-container">
@@ -42,32 +41,6 @@
                 </p-accordion-content>
             </p-accordion-panel>
             <p-accordion-panel value="1">
-                <p-accordion-header>
-                  <span class="flex items-center gap-2 w-full">
-                    <p-avatar image="/starling-box.png" shape="circle" />
-                    <span class="font-bold whitespace-nowrap">Habitat</span>                 
-                  </span>
-                </p-accordion-header>
-                <p-accordion-content>
-                    <p class="m-0">
-                      {{birdWithFact.birdFact?.habitat}}
-                    </p>
-                </p-accordion-content>
-            </p-accordion-panel>
-            <p-accordion-panel value="2">
-                <p-accordion-header>
-                  <span class="flex items-center gap-2 w-full">
-                    <p-avatar image="/nest.png" shape="circle" />
-                    <span class="font-bold whitespace-nowrap">Food</span>                 
-                  </span>
-                </p-accordion-header>
-                <p-accordion-content>
-                    <p class="m-0">
-                      {{birdWithFact.birdFact?.food}}
-                    </p>
-                </p-accordion-content>
-            </p-accordion-panel>
-            <p-accordion-panel value="3">
               <p-accordion-header>
                 <span class="flex items-center gap-2 w-full">
                   <p-avatar image="/fact.png" shape="circle" />
@@ -77,6 +50,32 @@
               <p-accordion-content>
                   <p class="m-0">
                     {{birdWithFact.birdFact?.keyFact}}
+                  </p>
+              </p-accordion-content>
+            </p-accordion-panel>
+            <p-accordion-panel value="2">
+              <p-accordion-header>
+                <span class="flex items-center gap-2 w-full">
+                  <p-avatar image="/starling-box.png" shape="circle" />
+                  <span class="font-bold whitespace-nowrap">Habitat</span>                 
+                </span>
+              </p-accordion-header>
+              <p-accordion-content>
+                  <p class="m-0">
+                    {{birdWithFact.birdFact?.habitat}}
+                  </p>
+              </p-accordion-content>
+          </p-accordion-panel>
+          <p-accordion-panel value="3">
+              <p-accordion-header>
+                <span class="flex items-center gap-2 w-full">
+                  <p-avatar image="/nest.png" shape="circle" />
+                  <span class="font-bold whitespace-nowrap">Food</span>                 
+                </span>
+              </p-accordion-header>
+              <p-accordion-content>
+                  <p class="m-0">
+                    {{birdWithFact.birdFact?.food}}
                   </p>
               </p-accordion-content>
           </p-accordion-panel>
