@@ -16,7 +16,7 @@
                  selectionMode="single" 
                  [tableStyle]="{ 'min-width': '60rem' }"
                  [paginator]="true"
-                 [rows]="4" 
+                 [rows]="7" 
                  dataKey="birdId">
             <ng-template #caption>
                 <div class="flex items-center justify-between">
@@ -48,9 +48,18 @@
                 </tr>
             </ng-template>
             <ng-template #expandedrow let-bird>
-                <div>
-                    <p>{{bird.birdFact.food}}</p>
-                 </div>   
+                <td colspan="4">
+                    <div class="expanded-row">
+                        {{bird.birdFact.food}}
+                        <div class="bird-item-image-container">
+                            <img
+                                src="/bird/main/{{bird.img}}"
+                                [alt]="bird.name"
+                                class="bird-item-image"
+                            />
+                        </div>
+                    </div>
+                </td>
             </ng-template>
         </p-table>
     </div>

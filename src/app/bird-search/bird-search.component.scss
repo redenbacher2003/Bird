@@ -23,6 +23,12 @@
     border-radius: 5px;
 }
 
+.expanded-row{
+    background-color:ghostwhite; 
+    font-weight: bold; 
+    text-align: left; 
+    padding: 2.75rem; 
+}
 
 :host ::ng-deep .p-datatable-thead > tr > th {
     background-color: #f0eadc; 
