@@ -28,16 +28,18 @@
                     <th style="width: 5rem"></th>
                     <th>Name</th>
                     <th>Scientific Name</th>
+                    <th>Size in Inches</th>
                     <th>Preview</th>
                 </tr>
             </ng-template>
-            <ng-template #body let-bird>
+            <ng-template #body let-bird let-expanded="expanded">
                 <tr>
                     <td>
-                        <p-button type="button" pRipple [pRowToggler]="bird" [text]="true" [rounded]="true" [plain]="true" [icon]="'pi pi-chevron-down'" />
+                        <p-button type="button" pRipple [pRowToggler]="bird" [text]="true" [rounded]="true" [plain]="true" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'" />
                     </td>
                     <td>{{ bird.name }}</td>
                     <td>{{ bird.scientificName }}</td>
+                    <td>{{ bird.birdFact.sizeInInches}}"</td>
                     <td>
                         <img
                             src="/bird/main/{{bird.img}}"
@@ -48,15 +50,20 @@
                 </tr>
             </ng-template>
             <ng-template #expandedrow let-bird>
-                <td colspan="4">
+                <td colspan="5">
                     <div class="expanded-row">
-                        {{bird.birdFact.food}}
                         <div class="bird-item-image-container">
                             <img
                                 src="/bird/main/{{bird.img}}"
                                 [alt]="bird.name"
-                                class="bird-item-image"
+                                class="bird-item-expanded-image"
                             />
+                        </div>
+                        <div class="bird-item-fact-container">
+                            <p class="secondary-label">Name</p>
+                            <p class="primary-label label-bold">{{bird.name}}</p>
+                            <p class="secondary-label">Food</p>
+                            <p class="primary-label label-bold">{{bird.birdFact.food}}</p>
                         </div>
                     </div>
                 </td>

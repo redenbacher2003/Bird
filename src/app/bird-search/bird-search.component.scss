@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .myflex {
     display: var(--display-flex);
     gap: 0.50rem;
@@ -24,10 +28,38 @@
 }
 
 .expanded-row{
+    display: var(--display-flex);
     background-color:ghostwhite; 
-    font-weight: bold; 
     text-align: left; 
-    padding: 2.75rem; 
+    padding: 1.75rem; 
+    gap: 2rem;
+
+}
+
+.bird-item-image-container {
+    width: 10rem;
+    height: 10rem;
+    overflow: hidden;    
+    min-width: 10rem;
+    object-fit: cover; 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+}
+
+.bird-item-fact-container {
+    display: var(--display-flex);
+    width: 50rem;
+    height: 10rem;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bird-item-expanded-image {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    border-radius: 5px; 
 }
 
 :host ::ng-deep .p-datatable-thead > tr > th {
@@ -38,3 +70,23 @@
     padding: 0.75rem; 
 }
 
+.primary-label {
+    font-size: var(--label-primary-preview-font-size);
+    color: var(--label-font-color);
+  }
+
+  .secondary-label {
+    font-size: var(--label-secondary-preview-font-size);
+    color: var(--label-font-color);
+  }
+
+ .label-bold {
+    font-weight: var(--label-bold-font-weight);
+  }
+      
+  p {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+    
