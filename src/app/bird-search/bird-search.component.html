@@ -28,6 +28,7 @@
                     <th style="width: 5rem"></th>
                     <th>Name</th>
                     <th>Scientific Name</th>
+                    <th>Specie</th>
                     <th>Size in Inches</th>
                     <th>Preview</th>
                 </tr>
@@ -39,6 +40,7 @@
                     </td>
                     <td>{{ bird.name }}</td>
                     <td>{{ bird.scientificName }}</td>
+                    <td>{{ bird.specieName }}</td>
                     <td>{{ bird.birdFact.sizeInInches}}"</td>
                     <td>
                         <img
@@ -50,7 +52,7 @@
                 </tr>
             </ng-template>
             <ng-template #expandedrow let-bird>
-                <td colspan="5">
+                <td colspan="6" (click)="goToBird(bird.birdId)">
                     <div class="expanded-row">
                         <div class="bird-item-image-container">
                             <img

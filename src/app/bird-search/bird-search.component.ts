@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { FloatLabel } from 'primeng/floatlabel';
 import { MenuItem } from 'primeng/api';
 import { DataaccessService } from '../dataaccess.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { TableModule } from 'primeng/table';
 import { birdWithFact } from '../interface/items';
 import { ButtonModule } from 'primeng/button';
@@ -21,7 +21,8 @@ import { TableRowCollapseEvent, TableRowExpandEvent } from 'primeng/table';
             TableModule,
             ButtonModule,
             NgIf,
-            Toast], 
+            Toast,
+            RouterModule], 
   templateUrl: './bird-search.component.html',
   styleUrl: './bird-search.component.scss',
   providers: [MessageService]
@@ -58,5 +59,10 @@ export class BirdSearchComponent {
   show() {
     this.messageService.add({ severity: 'success', summary: 'Info', detail: 'Found ' + this.searchResults.length + ' bird/s', life: 3000 });
   }
+
+  goToBird(birdId: number) {
+  this.router.navigate(['/bird', birdId]);
+}
+
 }
 

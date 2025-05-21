@@ -47,6 +47,7 @@ export interface MenuItem {
     name : string,  
     scientificName : string,
     specieId : number,
+    specieName : string,
     img : string,
     added: Date,
     birdFact? : BirdFact
