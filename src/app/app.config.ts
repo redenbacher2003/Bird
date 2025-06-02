@@ -6,6 +6,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { providePrimeNG } from 'primeng/config';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import Lara from '@primeng/themes/aura';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth.interceptor';
+import { provideAnimations } from '@angular/platform-browser/animations'
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }),
@@ -17,6 +20,12 @@ export const appConfig: ApplicationConfig = {
                 theme: {
                     preset: Lara
                 }
-            })
+            }),
+              provideAnimations(),
+                {
+                  provide: HTTP_INTERCEPTORS,
+                  useClass: AuthInterceptor,
+                  multi: true
+                }
             ]
 };

@@ -1,0 +1,21 @@
+
+<div class="login-parent">
+    <div class="login-splash" style="background-image: url('/birds_login.jpg')">
+    </div>    
+    <div class="login-input">
+        <p-floatlabel variant="on">
+            <input pInputText id="on_label" [(ngModel)]="userName" autocomplete="off" />
+            <label for="on_label">User Name</label>
+        </p-floatlabel>
+
+        <p-floatlabel variant="on">
+            <input pInputText id="on_label" [(ngModel)]="passWord" autocomplete="off" />
+            <label for="on_label">Password</label>
+        </p-floatlabel>
+
+        <div class="card flex justify-center">
+            <p-button label="Submit" />
+        </div>
+
+    </div>
+</div>

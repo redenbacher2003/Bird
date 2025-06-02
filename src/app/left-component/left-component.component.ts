@@ -48,7 +48,9 @@ export class LeftComponentComponent implements OnInit {
                 },
                 {                       
                     label: 'Habitat',
-                    icon: 'habitat-Icon'
+                    icon: 'habitat-Icon',
+                    routerLink: 'login'
+
                 },
                 {                    
                     label: 'Food',

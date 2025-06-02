@@ -68,4 +68,13 @@ export interface MenuItem {
       totalSpecies : number;
       birdsWithFact : BirdFact[];
     }
-    
+
+    export interface loginRequest {
+      userName: string; 
+      passWord: string; 
+    }
+    export interface tokenResponse {
+      accessToken: string; 
+      expiresIn: number;
+      code: string; 
+    }    
