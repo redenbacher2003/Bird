@@ -1,0 +1,38 @@
+.parent {
+    margin-top: 0.45rem;
+    display: flex;    
+    height: 90%;  
+    gap: 0.2rem;     
+}
+
+
+.header {
+    
+    background-color: #ffffff0a;
+    align-items: center;
+    display: flex;   
+    color: #ffffff04;
+    align-items: center;
+    justify-content:flex-start;    
+    padding : 0.50rem 0.50rem 0.50rem 1.25rem;
+    border-radius: 0.5rem;  
+}
+
+.section-div {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    height: 100%; /* Make the height relative to the parent */
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.right{
+    flex: 1;
+    padding: 0.3rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: scroll;
+    overflow-y: auto; 
+    overflow-x: hidden; 
+}

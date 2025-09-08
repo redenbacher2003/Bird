@@ -10,7 +10,6 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 @Component({
   selector: 'app-left-component',
   imports: [MenuModule, ToastModule, CommonModule, PanelMenuModule],
-  standalone: true,
   templateUrl: './left-component.component.html',
   styleUrl: './left-component.component.scss'
 })

@@ -1,7 +1,5 @@
 
 <div class="login-parent">
-    <div class="login-splash" style="background-image: url('/birds_login.jpg')">
-    </div>    
     <div class="login-input">
         <p-floatlabel variant="on">
             <input pInputText id="on_label" [(ngModel)]="userName" autocomplete="off" />
@@ -9,12 +7,12 @@
         </p-floatlabel>
 
         <p-floatlabel variant="on">
-            <input pInputText id="on_label" [(ngModel)]="passWord" autocomplete="off" />
+           <p-password [toggleMask]="true" [(ngModel)] = "passWord"></p-password>
             <label for="on_label">Password</label>
         </p-floatlabel>
 
         <div class="card flex justify-center">
-            <p-button label="Submit" />
+            <p-button label="Submit" (onClick)="onSubmit()" />
         </div>
 
     </div>

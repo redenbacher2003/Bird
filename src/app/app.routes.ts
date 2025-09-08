@@ -5,18 +5,25 @@ import { BirdCompomentComponent } from './bird-compoment/bird-compoment.componen
 import { DashbboardComponent } from './dashbboard/dashbboard.component';
 import { BirdSearchComponent } from './bird-search/bird-search.component';
 import { LogInComponent } from './log-in/log-in.component';
+import { AuthGuard } from './auth.guard';
+import { application } from 'express';
+import { AppComponent } from './app.component';
 export const routes: Routes = [
+  { path: '', component: LogInComponent }, // default route
+  { path: 'login', component: LogInComponent },
   {
     path: '',
-    component: DashbboardComponent // Set DashbboardComponent as the default route
+    component: HomeComponent,
+    children: [
+      { path: 'dashboard',component: DashbboardComponent},
+      { path: 'species', component: SpeciesComponent },
+      { path: 'bird/:id', component: BirdCompomentComponent },
+      { path: 'bird-search', component: BirdSearchComponent }
+      
+    ]
   },
-  { path: 'dashboard',component: DashbboardComponent},
-  { path: 'species', component: SpeciesComponent },
-  { path: 'bird/:id', component: BirdCompomentComponent },
-  { path: 'bird-search', component: BirdSearchComponent },
-  { path: 'login', component: LogInComponent } // Add the login route
-
-  ];
+ 
+];
  
 
 

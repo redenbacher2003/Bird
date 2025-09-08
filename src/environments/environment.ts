@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
-    apiUrl: 'https://localhost:7144/api/Bird',
-    authUrl: 'https://localhost:7144/api/Authenticate/Login',
+    apiUrl: 'http://www.Birds.com/api/Bird',
+    authUrl: 'http://www.Birds.com/api/Authenticate/Login',
   };
