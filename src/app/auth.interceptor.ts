@@ -7,10 +7,11 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenService } from './token.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private tokenService: TokenService) {}
+  constructor(private tokenService: TokenService, private routerService : Router) {}
 
   intercept(
     req: HttpRequest<any>,
@@ -22,6 +23,10 @@ export class AuthInterceptor implements HttpInterceptor {
       req = req.clone({
         setHeaders: { Authorization: `Bearer ${token}` },
       });
+    }
+    else {
+      console.log('No token found, redirecting to login.');
+      this.routerService.navigate(['/login']);
     }
 
     return next.handle(req);

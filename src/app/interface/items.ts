@@ -78,3 +78,15 @@ export interface MenuItem {
       expiresIn: number;
       code: string; 
     }    
+
+    export interface UserProfile {
+      id: string;
+      username: string;
+      lastname: string;
+      firstname: string;
+      email: string;
+      status?: string;
+      lastlogin?: Date;
+      token?: string;
+}
+

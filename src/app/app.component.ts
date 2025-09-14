@@ -1,13 +1,9 @@
 import { Component } from '@angular/core';
-import { LeftComponentComponent } from './left-component/left-component.component';
-import { HomeComponent } from './home/home.component';
-import { LogInComponent } from './log-in/log-in.component';
-import { CanActivate, Router, RouterModule } from '@angular/router';
-import e from 'express';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [LeftComponentComponent, HomeComponent, LogInComponent, RouterModule],  
+  imports: [RouterModule],  
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -21,11 +17,11 @@ export class AppComponent {
       } 
       else 
        {
-        const token = localStorage.getItem('access_token');
+        const token = localStorage.getItem('token');
           if (!token) {
             this.router.navigate(['/login']);
         } else {
-          this.router.navigate(['/home']);
+          //this.router.navigate(['/dashboard']);
         }
     }
   }

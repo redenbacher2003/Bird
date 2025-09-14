@@ -8,6 +8,7 @@ import { LogInComponent } from './log-in/log-in.component';
 import { AuthGuard } from './auth.guard';
 import { application } from 'express';
 import { AppComponent } from './app.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 export const routes: Routes = [
   { path: '', component: LogInComponent }, // default route
   { path: 'login', component: LogInComponent },
@@ -15,10 +16,11 @@ export const routes: Routes = [
     path: '',
     component: HomeComponent,
     children: [
-      { path: 'dashboard',component: DashbboardComponent},
-      { path: 'species', component: SpeciesComponent },
-      { path: 'bird/:id', component: BirdCompomentComponent },
-      { path: 'bird-search', component: BirdSearchComponent }
+      { path: 'dashboard',component: DashbboardComponent, canActivate: [AuthGuard]},
+      { path: 'species', component: SpeciesComponent, canActivate: [AuthGuard] },
+      { path: 'bird/:id', component: BirdCompomentComponent, canActivate: [AuthGuard] },
+      { path: 'bird-search', component: BirdSearchComponent, canActivate: [AuthGuard] },
+      { path : 'profile', component: UserProfileComponent, canActivate: [AuthGuard] }
       
     ]
   },

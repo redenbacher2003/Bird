@@ -4,7 +4,37 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 35vh;
+  width: 35vh;
   gap: 1rem;
+  border: 1px solid #ccc ;
+  border-radius: 8px;
+  background-color: lightgray;
+  opacity: 0.55;
   
+}
+
+.login-parent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f5f5f5;
+  background-image: url('/login.jpg');  
+}
+
+::ng-deep { 
+
+  p-floatlabel input[pInputText]{
+    
+    min-width: 200px; /* Optional: set a minimum width */
+    width: 100%;      /* Makes both inputs fill their parent container */
+}
+
+p-floatLabel {
+    width: 250px; /* Or a percentage */
+    display: block; /* To ensure width takes effect */
+}
+
 }

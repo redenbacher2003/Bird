@@ -48,7 +48,7 @@ export class LeftComponentComponent implements OnInit {
                 {                       
                     label: 'Habitat',
                     icon: 'habitat-Icon',
-                    routerLink: 'login'
+                    routerLink: ''
 
                 },
                 {                    
@@ -62,6 +62,11 @@ export class LeftComponentComponent implements OnInit {
             label: 'Profile',            
             icon: 'profile-Icon',
             items: [
+                {
+                    label: 'View Profile',
+                    icon: 'view-profile-Icon',
+                    routerLink: 'profile'
+                },
                 {   
                     label: 'Settings',
                     icon: 'settings-Icon'
@@ -69,6 +74,7 @@ export class LeftComponentComponent implements OnInit {
                 {                    
                     label: 'Logout',
                     icon: 'logout-Icon'
+                    
                 }
             ]
         }

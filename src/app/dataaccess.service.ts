@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { BirdAppStats, birdWithFact, MenuItem, specieItem, tokenResponse } from './interface/items';
+import { BirdAppStats, birdWithFact, MenuItem, specieItem, tokenResponse, UserProfile } from './interface/items';
 import { map, Observable } from 'rxjs';
 import { species } from './interface/items';
 import { bird } from './interface/items';
@@ -14,6 +14,8 @@ export class DataaccessService {
 
   private apiUrl: string = environment.apiUrl;  
   private authUrl: string = environment.authUrl;  
+  private authBaseUrl: string = environment.authBaseUrl;  
+  
   constructor(private http : HttpClient) { }
 
 
@@ -45,5 +47,8 @@ export class DataaccessService {
     return this.http.get(`${this.authUrl}?userName=${logIn.userName}&passWord=${logIn.passWord}`) as Observable<tokenResponse>;
   }
   
+  GetByUserIdAsync(userName: string): Observable<UserProfile> {
+    return this.http.get(`${this.authBaseUrl + "GetByUserIdAsync"}?userName=${userName}`) as Observable<UserProfile>;
+  }
 
 }

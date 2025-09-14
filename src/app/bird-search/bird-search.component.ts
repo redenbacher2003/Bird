@@ -49,6 +49,7 @@ export class BirdSearchComponent {
     if (this.searchValue) {
         this.dataAccessService.getBirdsBy(this.selectSearchBy!.toLowerCase(), this.searchValue!).subscribe((data) => {
         this.searchResults = data;
+        console.log(data);
         this.show()
       }
     )

@@ -1,6 +1,8 @@
 
 <div class="login-parent">
+
     <div class="login-input">
+        <h3>Birds!</h3>
         <p-floatlabel variant="on">
             <input pInputText id="on_label" [(ngModel)]="userName" autocomplete="off" />
             <label for="on_label">User Name</label>
@@ -17,3 +19,10 @@
 
     </div>
 </div>
+
+ <p-dialog header="UnAuthorized" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+    <span class="p-text-secondary block mb-8">UserName and/or Password is Invalid!</span>
+    <div>
+        <p-button label="Ok" (click)="visible = false" />
+    </div>
+ </p-dialog>
