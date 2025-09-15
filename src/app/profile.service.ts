@@ -31,4 +31,9 @@ export class ProfileService {
     localStorage.removeItem(this.userKey);
     this.userSubject.next(null);
   }
+
+  logout(): void {
+    this.clearUser();
+    localStorage.removeItem('token');
+  }
 }

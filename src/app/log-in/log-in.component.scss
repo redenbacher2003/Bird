@@ -4,14 +4,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 35vh;
-  width: 35vh;
+  height: 33vh;
+  width: 33vh;
   gap: 1rem;
   border: 1px solid #ccc ;
-  border-radius: 8px;
-  background-color: lightgray;
-  opacity: 0.55;
-  
+  border-radius: 5%;
+  background-color: #FFF;
 }
 
 .login-parent {
@@ -24,6 +22,8 @@
   background-image: url('/login.jpg');  
 }
 
+
+
 ::ng-deep { 
 
   p-floatlabel input[pInputText]{
@@ -32,9 +32,18 @@
     width: 100%;      /* Makes both inputs fill their parent container */
 }
 
-p-floatLabel {
-    width: 250px; /* Or a percentage */
-    display: block; /* To ensure width takes effect */
+  p-floatLabel {
+      width: 250px; /* Or a percentage */
+      display: block; /* To ensure width takes effect */
+  }
 }
 
+
+.hummingbird-Icon {
+  width: 3rem;
+  height: 3rem;
+  background-image: url("/hummingbird.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
