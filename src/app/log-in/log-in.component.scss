@@ -38,12 +38,18 @@
   }
 }
 
-
 .hummingbird-Icon {
-  width: 3rem;
-  height: 3rem;
+  width: 4rem;
+  height: 4rem;
   background-image: url("/hummingbird.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 70%;      /* Shrink image to create space */
+  border-radius: 50%;
+  background-color: rgb(218, 240, 197);
+  border: 1px solid  rgb(218, 240, 197);
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 2rem;           
 }

@@ -1,4 +1,4 @@
-<div class="profile-card">
+<div class="profile-card justify-center">
   <div class="avatar">
       <img src="userprofile.png" class="back-button" alt="Back" />
   </div>   
@@ -10,7 +10,17 @@
       <p>Email: {{ user.email }}</p>
     </div>
     <div>
-      <p-button label="Logout" icon="pi pi-sign-out" (click)="logout()"></p-button>
+      <p-button label="Logout" icon="pi pi-sign-out" (click)="confirm()"></p-button>
     </div> 
   </div>
+</div>
+
+<div class="card flex justify-center">
+    <p-confirmdialog>
+        <ng-template #message let-message>
+            <div class="flex flex-col items-center w-full gap-4 border-b border-surface-200 dark:border-surface-700">
+                <p>{{ message.message }}</p>
+            </div>
+        </ng-template>
+    </p-confirmdialog>
 </div>

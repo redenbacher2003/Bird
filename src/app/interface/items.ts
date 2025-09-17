@@ -3,6 +3,7 @@ export interface MenuItem {
     icon?: string;
     items?: MenuItem[];
     routerLink?: string;    
+    command?: () => void;
   }
 
   export interface species {

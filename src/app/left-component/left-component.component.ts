@@ -5,11 +5,23 @@ import { ToastModule } from 'primeng/toast';
 import { MenuItem } from '../interface/items';
 import { DataaccessService } from '../dataaccess.service';
 import { PanelMenuModule } from 'primeng/panelmenu';
-
+import { ConfirmationService } from 'primeng/api';
+import { ConfirmDialog } from 'primeng/confirmdialog';
+import { ButtonModule } from 'primeng/button';
+import { ProfileService } from '../profile.service';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-left-component',
-  imports: [MenuModule, ToastModule, CommonModule, PanelMenuModule],
+  imports: [ 
+             MenuModule, 
+             ToastModule,
+             CommonModule,
+             PanelMenuModule,
+             ConfirmDialog,
+             ButtonModule
+            ],
+  providers: [ConfirmationService],
   templateUrl: './left-component.component.html',
   styleUrl: './left-component.component.scss'
 })
@@ -17,7 +29,13 @@ export class LeftComponentComponent implements OnInit {
   
     items: MenuItem[] | undefined;
     specieItems : MenuItem[] | undefined;
-  constructor(private dataAccessService: DataaccessService) { }
+  constructor(
+               private dataAccessService: DataaccessService,
+               private confirmationService: ConfirmationService,
+               private router: Router,
+               private profileService : ProfileService
+              
+  ) { }
 
   ngOnInit() {
                                                        
@@ -73,11 +91,38 @@ export class LeftComponentComponent implements OnInit {
                 },
                 {                    
                     label: 'Logout',
-                    icon: 'logout-Icon'
-                    
+                    icon: 'logout-Icon',
+                    command: () => {this.confirm()}
                 }
             ]
         }
     ];
+  }
+
+  confirm() {
+        this.confirmationService.confirm({
+            header: 'Confirmation',
+            message: 'Are you sure you wish to logout?',
+            icon: 'pi pi-exclamation-circle',
+            rejectButtonProps: {
+                label: 'Cancel',
+                icon: 'pi pi-times',
+                variant: 'outlined',
+                size: 'small'
+            },
+            acceptButtonProps: {
+                label: 'Logout',
+                icon: 'pi pi-check',
+                size: 'small'
+            },
+            accept: () => {
+                this.logout()
+            }
+        });
+    }
+
+    logout() {
+    this.profileService.logout();
+    this.router.navigate(['/login']);
   }
 }
