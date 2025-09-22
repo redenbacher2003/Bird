@@ -1,18 +1,52 @@
 <div class="profile-card justify-center">
-  <div class="avatar">
-      <img src="userprofile.png" class="back-button" alt="Back" />
-  </div>   
-  <div class="info">
-    <div>
-      <h2>{{ user.firstname.trim().toUpperCase() }} {{ user.lastname.trim().toUpperCase() }}</h2>
+
+  <div class="one-column">
+    <div class="profile-header">
+      <div class="avatar">
+          <img src="userprofile.png" class="back-button" alt="Back" />
+      </div>   
+      <div class="info">
+        <div>
+          <h3>{{ user.firstname.trim() }} {{ user.lastname.trim() }}</h3>
+        </div>
+        <div>
+          <span style="font-size: small; color: gray;">{{ user.email }}</span>
+        </div>
+      </div>
     </div>
     <div>
-      <p>Email: {{ user.email }}</p>
+        <p-button label="Logout" icon="pi pi-sign-out" (click)="confirm()"></p-button>
     </div>
-    <div>
-      <p-button label="Logout" icon="pi pi-sign-out" (click)="confirm()"></p-button>
-    </div> 
   </div>
+
+  
+
+  <div class="info-group two-column">
+      <div>
+          <label for="userName">User Name</label>
+          <input pInputText id="userName" [(ngModel)]="this.user.username" />
+      </div>
+       <div>
+          <div class="mail-label">
+            <i class="pi pi-envelope"></i>
+            <label for="email">E-mail</label> 
+          </div>
+          <input pInputText id="email" [(ngModel)]="this.user.email" />
+      </div>
+  </div>  
+  <div class="info-group three-column">
+      <div>
+          <label for="lastName">Last Name</label>
+          <input pInputText id="lastName" [(ngModel)]="this.user.lastname" />
+      </div>
+      <div>
+          <label for="firstName">First Name</label>
+          <input pInputText id="firstName" [(ngModel)]="this.user.firstname" />
+      </div>
+
+   </div>
+  
+
 </div>
 
 <div class="card flex justify-center">
@@ -24,3 +58,4 @@
         </ng-template>
     </p-confirmdialog>
 </div>
+

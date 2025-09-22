@@ -2,7 +2,7 @@
 <div class="login-parent">
 
     <div class="login-input">
-        <div class="card flex">
+        <div class="card flex main-bird">
             <span class="hummingbird-Icon"></span>
         </div>
         <p-floatlabel variant="on">
@@ -22,7 +22,7 @@
     </div>
 </div>
 
- <p-dialog header="UnAuthorized" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+ <p-dialog header="Un-Authorized" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
     <span class="p-text-secondary block mb-8">UserName and/or Password is Invalid!</span>
     <div>
         <p-button label="Ok" (click)="visible = false" />

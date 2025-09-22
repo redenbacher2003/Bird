@@ -5,11 +5,13 @@ import { ButtonModule } from 'primeng/button';
 import { Router } from '@angular/router';
 import { ConfirmDialog } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
+import { InputTextModule } from 'primeng/inputtext';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-user-profile',
-  imports: [ButtonModule, ConfirmDialog],
+  imports: [ButtonModule, ConfirmDialog, InputTextModule, FormsModule],
   providers: [ConfirmationService],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.scss'
@@ -31,6 +33,13 @@ export class UserProfileComponent {
     };
 
   }
+
+      
+  inputLastName : string = '';    
+  inputFirstName : string = '';    
+  inputEmail : string = '';    
+  inputUserName : string = '';
+
 
   user : UserProfile = {
     id: '',

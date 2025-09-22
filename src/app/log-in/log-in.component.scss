@@ -32,10 +32,16 @@
     width: 100%;      /* Makes both inputs fill their parent container */
 }
 
+ p-floatlabel .p-password{
+    
+    min-width: 200px; /* Optional: set a minimum width */
+    width: 100%;      /* Makes both inputs fill their parent container */
+}
   p-floatLabel {
       width: 250px; /* Or a percentage */
       display: block; /* To ensure width takes effect */
   }
+
 }
 
 .hummingbird-Icon {
