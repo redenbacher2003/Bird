@@ -15,20 +15,22 @@
       </div>
     </div>
     <div>
-        <p-button label="Logout" icon="pi pi-sign-out" (click)="confirm()"></p-button>
+        <p-speeddial [model]="items" direction="left" [style]="{ top: 'calc(50% - 2rem)', left: 0 }" />
     </div>
   </div>
 
-  
 
   <div class="info-group two-column">
       <div>
-          <label for="userName">User Name</label>
-          <input pInputText id="userName" [(ngModel)]="this.user.username" />
+        <div class="label-with-icon">
+            <i class="view-profile-Icon"></i>
+            <label for="userName">User Name</label>
+          </div>
+          <input pInputText id="userName" [(ngModel)]="this.user.username" [disabled]="true" style="background-color: rgb(245, 245, 245);" />
       </div>
        <div>
-          <div class="mail-label">
-            <i class="pi pi-envelope"></i>
+          <div class="label-with-icon">
+            <i class="mail-Icon"></i>
             <label for="email">E-mail</label> 
           </div>
           <input pInputText id="email" [(ngModel)]="this.user.email" />
@@ -45,10 +47,7 @@
       </div>
 
    </div>
-  
-
 </div>
-
 <div class="card flex justify-center">
     <p-confirmdialog>
         <ng-template #message let-message>
@@ -59,3 +58,31 @@
     </p-confirmdialog>
 </div>
 
+<div class="flex update-password-container">
+    <p-dialog [modal]="true" [(visible)]="confirmPasswordDialogVisible" [style]="{ width: '30rem' }">
+      <ng-template pTemplate="header">
+        <i class="passwordReset-xl-Icon"></i>
+        <span class="text-xl font-semibold">Update Password</span>
+      </ng-template>
+
+      <div class ="up-form" >
+        <div class="input-label-group mb-2">
+              <label for="currentPassword" class="font-semibold w-24">Current</label>
+              <p-password [(ngModel)]="this.passwordUpdateDto.currentPassword" [toggleMask]="true" />        
+        </div>
+        <div class="input-label-group mb-2">
+              <label for="newPassword" class="font-semibold w-24">New</label>
+              <p-password [(ngModel)]="confirmPassword" [toggleMask]="true" />
+        </div>
+        <div class="input-label-group mb-2">
+            <label for="newPassword-confirm" class="font-semibold w-24">Confirm</label>          
+            <p-password [(ngModel)]="this.passwordUpdateDto.newPassword" [toggleMask]="true" />
+        </div>
+      </div>
+
+      <div class="flex gap-1 justify-content-end mt-3">
+          <p-button label="Cancel" severity="secondary" (click)="confirmPasswordDialogVisible = false" />
+          <p-button label="Save" (click)="updatePassword()" />
+      </div>
+    </p-dialog>
+</div>

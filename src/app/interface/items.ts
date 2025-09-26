@@ -89,5 +89,10 @@ export interface MenuItem {
       status?: string;
       lastlogin?: Date;
       token?: string;
-}
+   }
 
+   export interface AccountPasswordUpdateDto {
+        username : string;
+        currentPassword :string ;
+        newPassword : string;
+    }

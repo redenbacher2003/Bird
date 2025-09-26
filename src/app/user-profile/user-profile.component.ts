@@ -1,24 +1,45 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../profile.service';
 import { UserProfile } from '../interface/items';
 import { ButtonModule } from 'primeng/button';
 import { Router } from '@angular/router';
 import { ConfirmDialog } from 'primeng/confirmdialog';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MenuItem } from 'primeng/api';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
-
+import { SpeedDial } from 'primeng/speeddial';
+import { Tooltip, TooltipModule } from 'primeng/tooltip';
+import { Dialog } from 'primeng/dialog';
+import { PasswordModule } from 'primeng/password';
+import { AccountPasswordUpdateDto } from '../interface/items';
 
 @Component({
   selector: 'app-user-profile',
-  imports: [ButtonModule, ConfirmDialog, InputTextModule, FormsModule],
+  imports: [
+            ButtonModule,
+            ConfirmDialog,
+            InputTextModule,
+            FormsModule,
+            SpeedDial,
+            TooltipModule,
+            Dialog,
+            PasswordModule],
   providers: [ConfirmationService],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.scss'
 })
 
-export class UserProfileComponent {
+export class UserProfileComponent implements OnInit {
   
+  items: MenuItem[] = [];
+  confirmPasswordDialogVisible : boolean = false;
+  confirmPassword : string = ''; 
+  passwordUpdateDto : AccountPasswordUpdateDto = {
+    username : '',
+    currentPassword : '',
+    newPassword : ''
+  };  
+
   constructor(
               private profileService : ProfileService,
               private router: Router, 
@@ -34,6 +55,30 @@ export class UserProfileComponent {
 
   }
 
+  ngOnInit(): void {
+    this.items = [
+            {
+                icon: 'edit-Icon',
+                tooltipOptions: {tooltipLabel: 'Edit Profile', tooltipPosition: 'top'},
+                command: () => {
+                }
+            },
+            {
+                icon: 'logout-Icon',
+                tooltipOptions: {tooltipLabel: 'Log Out', tooltipPosition: 'top'},
+                command: () => {
+                  this.confirm();
+                }
+            },
+            {
+                icon: 'passwordReset-Icon',
+                tooltipOptions: {tooltipLabel: 'Reset Password', tooltipPosition: 'top'},
+                command: () => {
+                  this.showDialog();
+                }
+            }
+        ];
+}
       
   inputLastName : string = '';    
   inputFirstName : string = '';    
@@ -73,8 +118,19 @@ export class UserProfileComponent {
         });
     }
 
+  showDialog() {
+      this.confirmPasswordDialogVisible = true;
+  }
+
   logout() {
     this.profileService.logout();
     this.router.navigate(['/login']);
+  }
+
+    updatePassword() {
+      if (this.passwordUpdateDto.newPassword !== this.confirmPassword) {
+        alert("New Password and Confirm Password do not match.");
+        return;
+      }
   }
 }
