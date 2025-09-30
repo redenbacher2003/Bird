@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { ConfirmDialog } from 'primeng/confirmdialog';
 import { ConfirmationService, MenuItem } from 'primeng/api';
 import { InputTextModule } from 'primeng/inputtext';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SpeedDial } from 'primeng/speeddial';
 import { Tooltip, TooltipModule } from 'primeng/tooltip';
 import { Dialog } from 'primeng/dialog';
@@ -23,7 +23,8 @@ import { AccountPasswordUpdateDto } from '../interface/items';
             SpeedDial,
             TooltipModule,
             Dialog,
-            PasswordModule],
+            PasswordModule,
+            ReactiveFormsModule],
   providers: [ConfirmationService],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.scss'
@@ -34,6 +35,7 @@ export class UserProfileComponent implements OnInit {
   items: MenuItem[] = [];
   confirmPasswordDialogVisible : boolean = false;
   confirmPassword : string = ''; 
+  badPassword : boolean = false;
   passwordUpdateDto : AccountPasswordUpdateDto = {
     username : '',
     currentPassword : '',
@@ -79,13 +81,7 @@ export class UserProfileComponent implements OnInit {
             }
         ];
 }
-      
-  inputLastName : string = '';    
-  inputFirstName : string = '';    
-  inputEmail : string = '';    
-  inputUserName : string = '';
-
-
+ 
   user : UserProfile = {
     id: '',
     username: '',
@@ -127,10 +123,10 @@ export class UserProfileComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-    updatePassword() {
-      if (this.passwordUpdateDto.newPassword !== this.confirmPassword) {
-        alert("New Password and Confirm Password do not match.");
-        return;
-      }
+  updatePassword() {
+    if (this.passwordUpdateDto.newPassword !== this.confirmPassword) {
+      this.badPassword = true;
+      return;
+    }
   }
 }

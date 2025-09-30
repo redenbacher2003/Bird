@@ -42,6 +42,17 @@
       display: block; /* To ensure width takes effect */
   }
 
+  p-dialog {
+    .p-dialog-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+  }
+
 }
 
 .hummingbird-Icon {

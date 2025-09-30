@@ -68,11 +68,14 @@
       <div class ="up-form" >
         <div class="input-label-group mb-2">
               <label for="currentPassword" class="font-semibold w-24">Current</label>
-              <p-password [(ngModel)]="this.passwordUpdateDto.currentPassword" [toggleMask]="true" />        
+              <p-password 
+                          [(ngModel)]="this.passwordUpdateDto.currentPassword" 
+                          [toggleMask]="true" 
+                          />        
         </div>
         <div class="input-label-group mb-2">
               <label for="newPassword" class="font-semibold w-24">New</label>
-              <p-password [(ngModel)]="confirmPassword" [toggleMask]="true" />
+              <p-password [(ngModel)]="confirmPassword" [toggleMask]="true"/>
         </div>
         <div class="input-label-group mb-2">
             <label for="newPassword-confirm" class="font-semibold w-24">Confirm</label>          
@@ -80,9 +83,20 @@
         </div>
       </div>
 
-      <div class="flex gap-1 justify-content-end mt-3">
+      <div class="flex gap-1 justify-content-end mt-3 ">
           <p-button label="Cancel" severity="secondary" (click)="confirmPasswordDialogVisible = false" />
           <p-button label="Save" (click)="updatePassword()" />
       </div>
     </p-dialog>
+</div>
+
+<div class="flex bad-password-container">
+ <p-dialog [modal]="true" [(visible)]="badPassword" [style]="{ width: '25rem' }">
+    <div class="flex flex-column align-items-center justify-content-center gap-5">
+        <span>Password and Confirm password dont match!</span>
+    </div>
+    <div class="justify-content-center flex mt-4">
+        <p-button label="Try again" (click)="badPassword = false" severity="danger" [raised]="true"/>
+    </div>
+ </p-dialog>
 </div>

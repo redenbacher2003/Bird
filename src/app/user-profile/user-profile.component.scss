@@ -138,8 +138,16 @@
       gap: 0.50rem;
       justify-items: center;
       label {
-        width: 6rem; 
+        width: 5rem; 
         text-align: left ; 
+      }
+
+       .p-password {
+         input {
+          width: 21rem; 
+          box-sizing: border-box;
+          max-width: 100%;
+        }        
       }
     }
 
