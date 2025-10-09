@@ -4,14 +4,18 @@ import { UserProfile } from '../interface/items';
 import { ButtonModule } from 'primeng/button';
 import { Router } from '@angular/router';
 import { ConfirmDialog } from 'primeng/confirmdialog';
-import { ConfirmationService, MenuItem } from 'primeng/api';
+import { ConfirmationService, MenuItem, MessageService } from 'primeng/api';
 import { InputTextModule } from 'primeng/inputtext';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { SpeedDial } from 'primeng/speeddial';
 import { Tooltip, TooltipModule } from 'primeng/tooltip';
 import { Dialog } from 'primeng/dialog';
 import { PasswordModule } from 'primeng/password';
 import { AccountPasswordUpdateDto } from '../interface/items';
+import { passwordStrengthValidator } from '../password-validator.ts';
+import { NgIf } from '@angular/common';
+import { Toast, ToastModule } from 'primeng/toast';
+import { RippleModule } from 'primeng/ripple';
 
 @Component({
   selector: 'app-user-profile',
@@ -24,14 +28,17 @@ import { AccountPasswordUpdateDto } from '../interface/items';
             TooltipModule,
             Dialog,
             PasswordModule,
-            ReactiveFormsModule],
-  providers: [ConfirmationService],
+            ReactiveFormsModule,
+            ToastModule,
+            Toast,
+            RippleModule,
+            NgIf],
+  providers: [ConfirmationService, MessageService],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.scss'
 })
 
 export class UserProfileComponent implements OnInit {
-  
   items: MenuItem[] = [];
   confirmPasswordDialogVisible : boolean = false;
   confirmPassword : string = ''; 
@@ -41,11 +48,17 @@ export class UserProfileComponent implements OnInit {
     currentPassword : '',
     newPassword : ''
   };  
+  passswordForm = new FormGroup({
+    currentPassword: new FormControl('', {validators : [passwordStrengthValidator()]} ),
+    newPassword: new FormControl(''),
+    confirmPassword: new FormControl('')
+  });
 
   constructor(
               private profileService : ProfileService,
               private router: Router, 
-              private confirmationService: ConfirmationService) { 
+              private confirmationService: ConfirmationService,
+              private messageService: MessageService) { 
 
     this.user = this.profileService.getUser() ?? {
       id: '',
@@ -80,7 +93,15 @@ export class UserProfileComponent implements OnInit {
                 }
             }
         ];
-}
+
+        this.passswordForm.get('currentPassword')?.valueChanges.subscribe(() => {
+          const errors = this.passswordForm.get('currentPassword')?.errors;
+          if (errors) {
+            this.showError();
+          }
+        });
+
+      }
  
   user : UserProfile = {
     id: '',
@@ -128,5 +149,10 @@ export class UserProfileComponent implements OnInit {
       this.badPassword = true;
       return;
     }
+  }
+
+  showError() {
+    console.log('Displaying password strength error message');
+    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Message Content' });
   }
 }
