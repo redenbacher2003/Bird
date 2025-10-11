@@ -60,23 +60,36 @@
 
 <div class="flex update-password-container" [formGroup] = "passswordForm">
     <p-dialog [modal]="true" [(visible)]="confirmPasswordDialogVisible" [style]="{ width: '30rem' }">
-
       <ng-template pTemplate="header">
         <i class="passwordReset-xl-Icon"></i>
         <span class="text-xl font-semibold">Update Password</span>
       </ng-template>
-      <div class ="up-form" >
-        <div class="input-label-group mb-2">
-              <label for="currentPassword" class="font-semibold w-24">Current</label>
-              <p-password [toggleMask]="true" formControlName="currentPassword"/>        
-        </div>
-        <div class="input-label-group mb-2">
-              <label for="newPassword" class="font-semibold w-24">New</label>
+
+      <div class ="flex flex-column align-items-center justify-content-center">
+        <div class ="up-form" >
+          <div class="input-label-group mb-2">
+                <label for="currentPassword" class="font-semibold w-24">Current</label>
+                <p-password [toggleMask]="true" formControlName="currentPassword"/>        
+          </div>
+          <div class="input-label-group mb-2">
+                <label for="newPassword" class="font-semibold w-24">New</label>
+                <p-password [toggleMask]="true" formControlName="newPassword"/>
+          </div>
+          <div class="input-label-group mb-2">
+              <label for="confirmPassword" class="font-semibold w-24">Confirm</label>          
               <p-password [toggleMask]="true" formControlName="confirmPassword"/>
+          </div>
         </div>
-        <div class="input-label-group mb-2">
-            <label for="newPassword-confirm" class="font-semibold w-24">Confirm</label>          
-            <p-password [toggleMask]="true" formControlName="newPassword"/>
+        <p-divider />
+        <div class="pw-legend">
+          <h5>Password must contain the following :</h5>
+          <ul class="pw-list" style="font-size: small; margin: 0; padding-left: 1.2em; justify-items: left;">
+            <li><i class="pi pw-list-icon" [ngClass]="passwordValidationErrors?.['passwordStrengthNotMet'] || passwordValidationErrors?.['hasMinLength'] ? 'pi-check-circle' : 'pi-times-circle'"></i>At least 8 characters</li>
+            <li><i class="pi pw-list-icon" [ngClass]="passwordValidationErrors?.['passwordStrengthNotMet'] || passwordValidationErrors?.['hasUppercase'] ? 'pi-check-circle' : 'pi-times-circle'"></i>At least 1 uppercase letter (A-Z)</li>
+            <li><i class="pi pw-list-icon" [ngClass]="passwordValidationErrors?.['passwordStrengthNotMet'] || passwordValidationErrors?.['hasLowercase'] ? 'pi-check-circle' : 'pi-times-circle'"></i>At least 1 lowercase letter (a-z)</li>
+            <li><i class="pi pw-list-icon" [ngClass]="passwordValidationErrors?.['passwordStrengthNotMet'] || passwordValidationErrors?.['hasNumber'] ? 'pi-check-circle' : 'pi-times-circle'"></i>At least 1 number (0-9)</li>
+            <li><i class="pi pw-list-icon" [ngClass]="passwordValidationErrors?.['passwordStrengthNotMet'] || passwordValidationErrors?.['hasSpecialChar'] ? 'pi-check-circle' : 'pi-times-circle'"></i>At least 1 special character</li>
+          </ul>
         </div>
       </div>
 

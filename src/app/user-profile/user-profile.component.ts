@@ -6,16 +6,17 @@ import { Router } from '@angular/router';
 import { ConfirmDialog } from 'primeng/confirmdialog';
 import { ConfirmationService, MenuItem, MessageService } from 'primeng/api';
 import { InputTextModule } from 'primeng/inputtext';
-import { FormGroup, FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule, FormControl, ValidationErrors } from '@angular/forms';
 import { SpeedDial } from 'primeng/speeddial';
 import { Tooltip, TooltipModule } from 'primeng/tooltip';
 import { Dialog } from 'primeng/dialog';
 import { PasswordModule } from 'primeng/password';
 import { AccountPasswordUpdateDto } from '../interface/items';
 import { passwordStrengthValidator } from '../password-validator.ts';
-import { NgIf } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { Toast, ToastModule } from 'primeng/toast';
 import { RippleModule } from 'primeng/ripple';
+import { DividerModule } from 'primeng/divider';
 
 @Component({
   selector: 'app-user-profile',
@@ -32,7 +33,8 @@ import { RippleModule } from 'primeng/ripple';
             ToastModule,
             Toast,
             RippleModule,
-            NgIf],
+            CommonModule,
+            DividerModule],
   providers: [ConfirmationService, MessageService],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.scss'
@@ -43,6 +45,7 @@ export class UserProfileComponent implements OnInit {
   confirmPasswordDialogVisible : boolean = false;
   confirmPassword : string = ''; 
   badPassword : boolean = false;
+  passwordValidationErrors : ValidationErrors | null = null;
   passwordUpdateDto : AccountPasswordUpdateDto = {
     username : '',
     currentPassword : '',
@@ -50,8 +53,8 @@ export class UserProfileComponent implements OnInit {
   };  
   passswordForm = new FormGroup({
     currentPassword: new FormControl('', {validators : [passwordStrengthValidator()]} ),
-    newPassword: new FormControl(''),
-    confirmPassword: new FormControl('')
+    newPassword: new FormControl('', {validators : [passwordStrengthValidator()]} ),
+    confirmPassword: new FormControl('', {validators : [passwordStrengthValidator()]} )
   });
 
   constructor(
@@ -95,11 +98,20 @@ export class UserProfileComponent implements OnInit {
         ];
 
         this.passswordForm.get('currentPassword')?.valueChanges.subscribe(() => {
-          const errors = this.passswordForm.get('currentPassword')?.errors;
-          if (errors) {
-            this.showError();
-          }
+          const errors: ValidationErrors | null = this.passswordForm.get('currentPassword')?.errors ?? null;
+          this.passwordValidationErrors = errors;
         });
+
+         this.passswordForm.get('newPassword')?.valueChanges.subscribe(() => {
+          const errors: ValidationErrors | null = this.passswordForm.get('newPassword')?.errors ?? null;
+          this.passwordValidationErrors = errors;
+        });
+
+         this.passswordForm.get('confirmPassword')?.valueChanges.subscribe(() => {
+          const errors: ValidationErrors | null = this.passswordForm.get('confirmPassword')?.errors ?? null;
+          this.passwordValidationErrors = errors;
+        });
+
 
       }
  
@@ -151,8 +163,5 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
-  showError() {
-    console.log('Displaying password strength error message');
-    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Message Content' });
-  }
+  
 }

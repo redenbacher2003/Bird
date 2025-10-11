@@ -14,7 +14,12 @@ export function passwordStrengthValidator(): ValidatorFn {
     const hasMinLength = value.length >= 8; 
 
     const passwordValid = hasUppercase && hasLowercase && hasNumber && hasSpecialChar && hasMinLength;
-    console.log('Password strength validation result:', passwordValid);
-    return passwordValid ? null : { passwordStrength: false };
+
+    return { hasUppercase : hasUppercase, 
+                                    hasLowercase : hasLowercase, 
+                                    hasNumber : hasNumber, 
+                                    hasSpecialChar : hasSpecialChar, 
+                                    hasMinLength : hasMinLength, 
+                                    passwordStrengthNotMet: passwordValid};
   };
 }

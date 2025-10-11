@@ -153,7 +153,37 @@
 
   } 
 
-  
+.pw-legend {
+  display: block;
+  margin-top: -10px
+} 
+  .pw-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.pw-list li {
+  margin-bottom: 0.25rem; 
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pw-list-icon {
+  color: #21f333; /* or any color you prefer */
+  font-size: 1rem;
+}
+
+.pi-times-circle {
+  color: #f32160; /* or any color you prefer */
+  font-size: 1rem;
+}
+
+.pw-legend h5 {
+  margin-bottom: 0.50rem;
+}
+
+
 
 
 
