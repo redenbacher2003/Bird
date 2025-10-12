@@ -17,6 +17,7 @@ import { CommonModule, NgIf } from '@angular/common';
 import { Toast, ToastModule } from 'primeng/toast';
 import { RippleModule } from 'primeng/ripple';
 import { DividerModule } from 'primeng/divider';
+import { DataaccessService } from '../dataaccess.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -61,7 +62,8 @@ export class UserProfileComponent implements OnInit {
               private profileService : ProfileService,
               private router: Router, 
               private confirmationService: ConfirmationService,
-              private messageService: MessageService) { 
+              private messageService: MessageService,
+              private dataService : DataaccessService) { 
 
     this.user = this.profileService.getUser() ?? {
       id: '',
@@ -157,11 +159,22 @@ export class UserProfileComponent implements OnInit {
   }
 
   updatePassword() {
-    if (this.passwordUpdateDto.newPassword !== this.confirmPassword) {
-      this.badPassword = true;
-      return;
+    if (this.passswordForm.get('newPassword')?.value === this.passswordForm.get('confirmPassword')?.value) {
+      this.passwordUpdateDto.username = this.user.username;
+      this.passwordUpdateDto.currentPassword = this.passswordForm.get('currentPassword')?.value ?? '';
+      this.passwordUpdateDto.newPassword = this.passswordForm.get('newPassword')?.value ?? '';
+      console.log(this.passwordUpdateDto);
+      this.dataService.UpdatePasswordAsync(this.passwordUpdateDto).subscribe({
+        next: (result) => {
+          console.log('Password updated successfully', result);
+          this.messageService.add({severity:'success', summary: 'Success', detail: 'Password updated successfully'}); 
     }
-  }
-
-  
+  });
+      this.passswordForm.reset();
+      this.confirmPasswordDialogVisible = false;
+    }
+    else {
+      this.badPassword = true;
+    }
+ }
 }
