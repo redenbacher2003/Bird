@@ -18,6 +18,7 @@ import { Toast, ToastModule } from 'primeng/toast';
 import { RippleModule } from 'primeng/ripple';
 import { DividerModule } from 'primeng/divider';
 import { DataaccessService } from '../dataaccess.service';
+import { error } from 'node:console';
 
 @Component({
   selector: 'app-user-profile',
@@ -168,11 +169,17 @@ export class UserProfileComponent implements OnInit {
         next: (result) => {
           console.log('Password updated successfully', result);
           this.messageService.add({severity:'success', summary: 'Success', detail: 'Password updated successfully'}); 
-    }
-  });
+          },
+        error: (error) => {
+          console.error('Error updating password', error);
+          this.messageService.add({severity:'error', summary: 'Error', detail: 'Failed to update password'}); 
+        }
+      });
       this.passswordForm.reset();
       this.confirmPasswordDialogVisible = false;
-    }
+      this.badPassword = false;
+    
+    } 
     else {
       this.badPassword = true;
     }
