@@ -19,6 +19,8 @@ import { RippleModule } from 'primeng/ripple';
 import { DividerModule } from 'primeng/divider';
 import { DataaccessService } from '../dataaccess.service';
 import { error } from 'node:console';
+import { DrawerModule } from 'primeng/drawer';
+import { Timeline } from 'primeng/timeline';
 
 @Component({
   selector: 'app-user-profile',
@@ -36,7 +38,9 @@ import { error } from 'node:console';
             Toast,
             RippleModule,
             CommonModule,
-            DividerModule],
+            DividerModule,
+            DrawerModule,
+            Timeline],
   providers: [ConfirmationService, MessageService],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.scss'
@@ -47,6 +51,8 @@ export class UserProfileComponent implements OnInit {
   confirmPasswordDialogVisible : boolean = false;
   confirmPassword : string = ''; 
   badPassword : boolean = false;
+  drawerLogVisible: boolean = false;
+  events: any[];
   passwordValidationErrors : ValidationErrors | null = null;
   passwordUpdateDto : AccountPasswordUpdateDto = {
     username : '',
@@ -74,6 +80,9 @@ export class UserProfileComponent implements OnInit {
       email: ''
     };
 
+    this.events = this.profileService.getUserLogs(this.user.activityLogs ?? []) || [];
+    console.log(this.events);
+
   }
 
   ngOnInit(): void {
@@ -96,6 +105,13 @@ export class UserProfileComponent implements OnInit {
                 tooltipOptions: {tooltipLabel: 'Reset Password', tooltipPosition: 'top'},
                 command: () => {
                   this.showDialog();
+                }
+            },
+            {
+                icon: 'activity-Icon',
+                tooltipOptions: {tooltipLabel: 'View Activity', tooltipPosition: 'top'},
+                command: () => {
+                  this.showLog();
                 }
             }
         ];
@@ -153,6 +169,11 @@ export class UserProfileComponent implements OnInit {
   showDialog() {
       this.confirmPasswordDialogVisible = true;
   }
+
+  showLog() {
+      this.drawerLogVisible = true;
+  }
+
 
   logout() {
     this.profileService.logout();

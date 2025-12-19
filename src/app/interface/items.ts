@@ -89,10 +89,27 @@ export interface MenuItem {
       status?: string;
       lastlogin?: Date;
       token?: string;
+      activityLogs?: activityLog[];
    }
 
    export interface AccountPasswordUpdateDto {
         username : string;
         currentPassword :string ;
         newPassword : string;
+    }
+
+    export interface activityLog {
+      id : number;
+      userId : number;
+      activityId : number;
+      activityDate : Date;
+      activityType : string;
+    }
+
+    export interface ActivityEvent {
+      status : string;
+      date : Date;
+      icon : string;
+      color? : string;
+      image? : string;
     }

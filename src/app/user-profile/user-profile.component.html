@@ -110,3 +110,18 @@
     </div>
  </p-dialog>
 </div>
+
+<div class="card flex justify-center">
+    <p-drawer [(visible)]="drawerLogVisible" header="User Activity" position="right">
+      <div class="card">
+        <p-timeline [value]="events" class="customized-timeline">
+            <ng-template #opposite let-event>
+                <small class="text-surface-500 dark:text-surface-400">{{ event.date | date : "short" }}</small>
+            </ng-template>
+            <ng-template #content let-event>
+                {{ event.status }}
+            </ng-template>
+        </p-timeline>
+      </div>
+    </p-drawer>
+</div>

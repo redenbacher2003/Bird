@@ -48,7 +48,7 @@ export class DataaccessService {
   }
   
   GetByUserIdAsync(userName: string): Observable<UserProfile> {
-    return this.http.get(`${this.authBaseUrl + "GetByUserIdAsync"}?userName=${userName}`) as Observable<UserProfile>;
+    return this.http.get(`${this.authBaseUrl + "GetByUserIdAsync"}?userName=${userName}&includeActivity=true`) as Observable<UserProfile>;
   }
   UpdatePasswordAsync(userProfile: AccountPasswordUpdateDto): Observable<AccountPasswordUpdateDto> {
     return this.http.put(`${this.authBaseUrl + "UpdatePasswordAsync"}`, userProfile) as Observable<AccountPasswordUpdateDto>;

@@ -132,6 +132,42 @@
       background-size: cover;
     }
 
+    .activity-Icon {
+      width: 1rem;
+      height: 1rem;
+      background-image: url("/online-activity.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .login-Icon {
+      width: 1rem;
+      height: 1rem;
+      background-image: url("/login.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .update-password-Icon {
+      width: 1rem;
+      height: 1rem;
+      background-image: url("/update-password.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+  .custom-marker {
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border-radius: 50%;
+    z-index: 1; /* Ensures the marker is above the connector line */
+  }
   .input-label-group {
       display: flex;
       align-items: center;      

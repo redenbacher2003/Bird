@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { UserProfile } from './interface/items';
+import { ActivityEvent, activityLog, UserProfile } from './interface/items';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +16,26 @@ export class ProfileService {
   private getUserFromStorage(): UserProfile | null {
     const data = localStorage.getItem(this.userKey);
     return data ? JSON.parse(data) : null;
+  }
+
+  getUserLogs(userLog : activityLog[]): ActivityEvent[] | null {
+
+    return userLog?.map(log => ({
+      status: log.activityType,
+      date: log.activityDate,
+      icon: this.getActivityIcon(log.activityType),
+      color: '#2196F3' 
+    })) || null;
+  }
+  private getActivityIcon(activityType: string): string {
+    switch (activityType) {
+      case 'User logged in':
+        return 'login-Icon';
+      case 'User updated password':
+        return 'update-password-Icon';
+      default:
+        return 'pi pi-info-circle';
+    }
   }
 
   setUser(user: UserProfile): void {
