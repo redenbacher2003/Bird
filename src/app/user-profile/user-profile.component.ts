@@ -81,34 +81,34 @@ export class UserProfileComponent implements OnInit {
     };
 
     this.events = this.profileService.getUserLogs(this.user.activityLogs ?? []) || [];
-    console.log(this.events);
+    
 
   }
 
   ngOnInit(): void {
     this.items = [
             {
-                icon: 'edit-Icon',
+                icon: 'pi pi-user-edit',
                 tooltipOptions: {tooltipLabel: 'Edit Profile', tooltipPosition: 'top'},
                 command: () => {
                 }
             },
             {
-                icon: 'logout-Icon',
+                icon: 'pi pi-sign-out',
                 tooltipOptions: {tooltipLabel: 'Log Out', tooltipPosition: 'top'},
                 command: () => {
                   this.confirm();
                 }
             },
             {
-                icon: 'passwordReset-Icon',
+                icon: 'pi pi-key',
                 tooltipOptions: {tooltipLabel: 'Reset Password', tooltipPosition: 'top'},
                 command: () => {
                   this.showDialog();
                 }
             },
             {
-                icon: 'activity-Icon',
+                icon: 'pi pi-history',
                 tooltipOptions: {tooltipLabel: 'View Activity', tooltipPosition: 'top'},
                 command: () => {
                   this.showLog();
@@ -155,7 +155,7 @@ export class UserProfileComponent implements OnInit {
             },
             acceptButtonProps: {
                 label: 'Logout',
-                icon: 'pi pi-check',
+                icon: 'pi pi-sign-out',
                 size: 'small'
             },
             accept: () => {

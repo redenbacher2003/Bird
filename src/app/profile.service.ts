@@ -25,14 +25,14 @@ export class ProfileService {
       date: log.activityDate,
       icon: this.getActivityIcon(log.activityType),
       color: '#2196F3' 
-    })) || null;
+    })).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()) || null;
   }
   private getActivityIcon(activityType: string): string {
     switch (activityType) {
       case 'User logged in':
-        return 'login-Icon';
+        return 'pi pi-sign-in';
       case 'User updated password':
-        return 'update-password-Icon';
+        return 'pi pi-user-edit';
       default:
         return 'pi pi-info-circle';
     }

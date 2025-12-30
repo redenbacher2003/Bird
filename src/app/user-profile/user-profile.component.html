@@ -61,7 +61,7 @@
 <div class="flex update-password-container" [formGroup] = "passswordForm">
     <p-dialog [modal]="true" [(visible)]="confirmPasswordDialogVisible" [style]="{ width: '30rem' }">
       <ng-template pTemplate="header">
-        <i class="passwordReset-xl-Icon"></i>
+        <i class="pi pi-key"></i>
         <span class="text-xl font-semibold">Update Password</span>
       </ng-template>
 
@@ -117,6 +117,11 @@
         <p-timeline [value]="events" class="customized-timeline">
             <ng-template #opposite let-event>
                 <small class="text-surface-500 dark:text-surface-400">{{ event.date | date : "short" }}</small>
+            </ng-template>
+             <ng-template #marker let-event>
+              <div class="icon-circle">
+                <i [class]="event.icon"></i>
+              </div>
             </ng-template>
             <ng-template #content let-event>
                 {{ event.status }}

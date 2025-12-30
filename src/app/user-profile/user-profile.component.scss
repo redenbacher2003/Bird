@@ -158,16 +158,6 @@
       background-size: cover;
     }
 
-  .custom-marker {
-    display: flex;
-    width: 2rem;
-    height: 2rem;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    border-radius: 50%;
-    z-index: 1; /* Ensures the marker is above the connector line */
-  }
   .input-label-group {
       display: flex;
       align-items: center;      
@@ -187,7 +177,30 @@
       }
     }
 
+    .timeline-marker {
+      border-radius: 50%;
+      width: 0.5rem;
+      height: 0.5rem;
   } 
+}
+
+ .icon-circle {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #4a9c24; 
+  border-radius: 50%;
+  border: 2px solid #fff;  
+  color: white;
+  font-size: 0.5rem; 
+  cursor: pointer;     
+}
+
+.icon-circle:hover {
+  background-color: #368313;
+}
 
 .pw-legend {
   display: block;
