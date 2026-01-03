@@ -4,6 +4,7 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
+  HttpResponse 
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenService } from './token.service';
@@ -18,8 +19,9 @@ export class AuthInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const token = this.tokenService.getToken();
-
+   
     if (token) {
+      console.log('Token found, adding Authorization header.');
       req = req.clone({
         setHeaders: { Authorization: `Bearer ${token}` },
       });

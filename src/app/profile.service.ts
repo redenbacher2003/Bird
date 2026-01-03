@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ActivityEvent, activityLog, UserProfile } from './interface/items';
+import { DataaccessService } from './dataaccess.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ export class ProfileService {
 
   user$ = this.userSubject.asObservable();
 
-  constructor() {}
+  constructor(private dataAccessService : DataaccessService) {}
 
   private getUserFromStorage(): UserProfile | null {
     const data = localStorage.getItem(this.userKey);
@@ -33,6 +34,8 @@ export class ProfileService {
         return 'pi pi-sign-in';
       case 'User updated password':
         return 'pi pi-user-edit';
+      case 'User logged out':
+        return 'pi pi-sign-out';
       default:
         return 'pi pi-info-circle';
     }
@@ -53,6 +56,13 @@ export class ProfileService {
   }
 
   logout(): void {
+    
+    let username = this.getUser()?.username || '';
+    this.dataAccessService.logOut(username || '').subscribe({
+      next: (result: boolean) => {
+        console.log('Logout successful:', result);
+      }
+    });
     this.clearUser();
     localStorage.removeItem('token');
   }

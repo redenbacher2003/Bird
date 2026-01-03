@@ -15,6 +15,7 @@ export class DataaccessService {
   private apiUrl: string = environment.apiUrl;  
   private authUrl: string = environment.authUrl;  
   private authBaseUrl: string = environment.authBaseUrl;  
+  private logoutUrl: string = environment.logoutUrl;  
   
   constructor(private http : HttpClient) { }
 
@@ -45,6 +46,10 @@ export class DataaccessService {
 
   logIn(logIn : loginRequest): Observable<tokenResponse> {
     return this.http.get(`${this.authUrl}?userName=${logIn.userName}&passWord=${logIn.passWord}`) as Observable<tokenResponse>;
+  }
+  
+  logOut(userName : string): Observable<boolean> {
+    return this.http.post<boolean>(`${this.logoutUrl}?userName=${userName}`, {});
   }
   
   GetByUserIdAsync(userName: string): Observable<UserProfile> {

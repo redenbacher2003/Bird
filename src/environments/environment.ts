@@ -1,6 +1,9 @@
+import { log } from "console";
+
 export const environment = {
     production: false,
     apiUrl: 'http://www.Birds.com/api/Bird',
     authUrl: 'http://www.Birds.com/api/Authenticate/Login',
-    authBaseUrl : 'http://www.Birds.com/api/Authenticate/'
+    authBaseUrl : 'http://www.Birds.com/api/Authenticate/',
+    logoutUrl : 'http://www.Birds.com/api/Authenticate/Logout'
   };
