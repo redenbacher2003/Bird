@@ -13,7 +13,7 @@ import { provideAnimations } from '@angular/platform-browser/animations'
 export const appConfig: ApplicationConfig = {
   providers: [
               provideZoneChangeDetection({ eventCoalescing: true }),
-              provideHttpClient(withInterceptorsFromDi()),
+              provideHttpClient(withInterceptorsFromDi(), withFetch()),
               provideRouter(routes), 
               provideClientHydration(withEventReplay()),
               provideAnimationsAsync(),
